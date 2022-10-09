@@ -1,0 +1,36 @@
+
+######################################
+#pyCustard: understanding multiple inheritance in python
+#this code is created by Rezaul Hoque on October 09,2022.
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+######################################
+class Food:
+    def __init__(self,price,**kwargs):
+               self.price=price
+
+class Cake(Food):
+   def __init__(self,color,**kwargs):  
+      self.color=color
+      super().__init__(**kwargs)
+
+class Curd(Food):
+   def __init__(self,taste,smell,**kwargs):
+      self.taste=taste
+      self.smell=smell
+      super().__init__(**kwargs)
+
+class Custard(Cake,Curd):
+   def __init__(self,Dessert,**kwargs):
+      self.Dessert=Dessert
+      super().__init__(**kwargs)
+
+   def disp(self):
+          print(f"{self.price}  {self.color}  {self.taste} {self.smell}")
+
+
+print("price   color      taste         smell")
+c=Custard(price=100,color="LightYellow",taste="Sweet & sour",smell="Cheesy",Dessert=True)
+c.disp()
+
+
