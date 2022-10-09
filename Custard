@@ -1,0 +1,70 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Custard: understanding virtual inheritance
+//this code is  created by Rezaul Hoque on October 07,2022;
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+//////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <string>
+enum COLOR {Red,Green, Yellow, Blue, LightYellow,White};
+class Food{
+
+int price;
+public:
+Food(int p){price=p;}
+virtual ~Food(){}
+virtual int GetPrice() const {return price;}
+virtual void SetPrice(int p){ price=p;}
+};
+class Cake: virtual public Food{
+protected:
+COLOR color;
+std::string taste;
+public:
+Cake(COLOR ,int ,std::string );
+virtual ~Cake(){}
+
+virtual COLOR getColor() const{ return color;}
+virtual std::string getTaste() const {return taste;}
+};
+Cake::Cake(COLOR c ,int p,std::string s):Food(p),color(c),taste(s){}
+class Curd: virtual public Food{
+protected:
+COLOR color;
+std::string taste;
+std::string smell;
+public:
+Curd(COLOR ,int ,std::string ,std::string);
+virtual ~Curd(){}
+
+
+virtual COLOR getColor() const{ return color;}
+virtual std::string getTaste() const {return taste;}
+virtual std::string getSmell() const {return smell;}
+};
+Curd::Curd(COLOR c,int p,std::string s,std::string sm):Food(p),color(c),taste(s),smell(sm){}
+class Custard: public Cake,public Curd{
+protected:
+bool isDessert;
+public:
+Custard(int ,COLOR ,std::string ,std::string ,bool);
+~Custard(){}
+virtual COLOR getColor(){return Cake::color;}
+virtual std::string getTaste(){return Curd::taste;}
+virtual  std::string getSmell(){return Curd::smell;}
+virtual bool getDessert(){return isDessert;}
+};
+Custard::Custard(int p,COLOR c ,std::string t,std::string s,bool des):Cake(c,p,t),Curd(c,p,t,s),Food(p*0.75),isDessert(des){}
+
+int main()
+{
+Custard *p=new Custard(100,LightYellow,"Sweet & sour","Cheesy",true);
+int pr=p->GetPrice();
+std::string t=p->getTaste();
+
+std::string s=p->getSmell();
+std::cout<<"price  taste      smell:\n";
+std:: cout<<pr<<"    "<<t<<" "<<s<<"\n";
+delete p;
+return 0;
+}
