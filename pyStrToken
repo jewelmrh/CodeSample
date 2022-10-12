@@ -1,0 +1,16 @@
+
+##########################################
+#pyStrToken: tokenize the string "Abra-Ka (789)" in such a way so that "Abraka" becomes one single part and the "789" becomes another integer part;
+#this code is  created by Rezaul Hoque on October 12,2022;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+######################################
+t="Abra-ka (789)"
+b=t.split(' ')
+c=b[0].split('-')
+e=b[1].split('(')
+f=e[1].split (')')
+print(f[0])
+print(c[0],c[1])
+d=c[0]+c[1]
+print(d," ",f[0])
