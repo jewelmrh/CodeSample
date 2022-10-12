@@ -1,0 +1,40 @@
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//StrToken: tokenize the string "Abra-Ka (789)" in such a way so that "Abraka" becomes one single part and the "789" becomes another integer part;
+//this code is  created by Rezaul Hoque on October 12,2022;
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <cstring>
+#include <string>
+
+int main()
+{
+    char s[]="Abra-ka (789)";
+  
+int i=0;
+   char *p;
+  p=strtok(s,"  -()");
+std::string c[3]={" "," "," "};
+
+while(p){
+c[i]=p;
+p=strtok(NULL," -()");
+i++;
+}
+
+for(int i=0;i<3;i++){
+std::cout<<c[i]<<" ";
+}
+std::cout<<"\n";
+
+std::string x,y,z;
+x=c[0];
+y=c[1];
+x.append(y);
+
+std::cout<<"\n"<<x<<" "<<c[2];
+
+return 0;
+}
