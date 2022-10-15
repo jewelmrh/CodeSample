@@ -1,0 +1,33 @@
+
+######################################
+#pySortArray:Python equivalent of SortArray program
+#this code is  created by Rezaul Hoque on October 15,2022;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+######################################
+
+class SortAr:
+  def __init__(self,s):
+        self.s=s
+
+  def  sort(self,s):
+        for i in range(1,6):
+           for j in range (0,6-i):
+             if (a[j]>a[j+1]):
+                temp=self.s[j]
+                self.s[j]=self.s[j+1]
+                self.s[j+1]=temp
+             
+  def  display(self):
+        for i in range(0,6):
+             print(self.s[i]," ")
+
+
+a=["Hi","Salam","Namastey","Hola","Konnichiwa","Ni Hao"]
+so=SortAr(a)
+print("Before sort:\n")
+so.display()
+
+print("\nAfter sort:\n")
+so.sort(a)
+so.display()
