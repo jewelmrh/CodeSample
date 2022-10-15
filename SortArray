@@ -1,0 +1,44 @@
+
+////////////////////////////////////////////////////////////////////////////////
+//SortArray: an array of string elements sorted alphabetically
+//this code is  created by Rezaul Hoque on October 15,2022;
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <string>
+
+class sortAr{
+std::string *s;
+public:
+sortAr(){}
+sortAr(std::string*a){
+s=a;}
+~sortAr(){}
+
+void sort(std::string a[]){
+for (int i=1;i<6;i++)
+   for(int j=0;j<6-i;j++)
+if(a[j]>a[j+1]){
+ std::string temp=a[j];
+a[j]=a[j+1];
+a[j+1]=temp;
+}
+  
+}
+void display(){
+
+for (int i=0;i<6;i++)
+std::cout<<s[i]<<"\n ";
+ 
+}
+};
+int main(){
+std::string a[]={"Hi","Salam","Namastey","Hola","Konnichiwa","Ni Hao"};
+sortAr so(a);
+std::cout<<" Before sort:\n\n";
+so.display();
+so.sort(a);
+std::cout<<"\nAfter sort:\n";
+so.display();
+return 0;
