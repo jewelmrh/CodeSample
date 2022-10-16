@@ -1,0 +1,53 @@
+#python 3.6.9
+
+######################################
+#pyWordOccur:Count the occurrences of 1-letter,2-letter,3-letter... words in a text
+#this code is  created by Rezaul Hoque on October 16,022;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+######################################
+t="Today is a beautiful day and it is Wednesday!"
+b=t.split(' ')
+c1=0
+c2=0
+c3=0
+c4=0
+c5=0
+c6=0
+c7=0
+c8=0
+c9=0
+for i in range(0,9):
+  if(len(b[i])==1):
+     c1+=1
+ 
+  if(len(b[i])==2):
+     c2+=1
+  
+  if(len(b[i])==3):
+     c3+=1
+
+  if(len(b[i])==4):
+     c4+=1
+
+  if(len(b[i])==5):
+     c5+=1
+  
+  if(len(b[i])==6):
+     c6+=1
+
+  if(len(b[i])==7):
+     c7+=1
+  
+  if(len(b[i])==8):
+     c8+=1
+
+  if(len(b[i])==9):
+     c9+=1
+
+count=[c1,c2,c3,c4,c5,c6,c7,c8,c9]
+
+print("Word length       Occurrences ")
+for i in range(0,9):
+   print(i+1,"                 ",count[i])
+
