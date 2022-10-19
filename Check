@@ -1,0 +1,35 @@
+
+////////////////////////////////////////////////////////////////////////////////
+//Check: read a dollar amount (max 8 digits)from user to be printed on a check and then print it with leading asterisks substituting the empty spaces
+//this code is  created by Rezaul Hoque on October 19,2022;
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////////
+
+#include <iostream>
+ int size =8;
+int n=6;
+int m=8-n;
+ void append(char [], int , char [], int);
+void append(char a[], int m, char b[], int n){
+int i;
+
+for (i=0;i<size; i++)
+a[m+i]= b[i];
+for(i=0;i<size;i++)
+cout<<" "<<a[i];
+}
+int main ()
+{
+
+
+char a[size];
+char b[n];
+for(int i=0;i<size;i++)
+ a[i]='*';
+
+for(int i=0;i<n;i++)
+ std::cin>>b[i];
+append(a,2,b,6);
+return 0;
+}
