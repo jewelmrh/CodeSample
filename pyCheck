@@ -1,0 +1,18 @@
+
+#######################################
+#pyCheck: read a dollar amount (max 8 digits)from user to be printed on a check and then print it with leading asterisks substituting the empty spaces
+#this code is  created by Rezaul Hoque on October 20,2022;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+######################################
+size=8
+a =input('Enter dollar amount(Max 8 digits):\n')
+h=a.split()
+c=[float(x) for x in h]
+m=len(a)
+n=size-m
+b =['*']*n
+
+b += c 
+print(b)
+
