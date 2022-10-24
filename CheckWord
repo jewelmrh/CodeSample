@@ -1,0 +1,49 @@
+
+////////////////////////////////////////////////////////////////////////////////
+//CheckWord: read a dollar amount (max 8 digits)from user to be printed on a check and then print it in check protected format(in words)
+//this code is  created by Rezaul Hoque on October 24,2022;
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////////
+
+#include <iostream>
+#include <string>
+using namespace std;
+ int size =8;
+int n=6;
+int m=8-n;
+ void append(char [], int , char [], int);
+void append(char a[], int m, char b[], int n){
+int i;
+
+for (i=0;i<size; i++)
+a[m+i]= b[i];
+for(i=0;i<size;i++)
+cout<<" "<<a[i];
+}
+int main ()
+{
+
+
+char a[size];
+char b[n];
+for(int i=0;i<size;i++)
+ a[i]='*';
+
+for(int i=0;i<size;i++)
+ std::cin>>b[i];
+append(a,0,b,8);
+if(size==8 && a[0]=='1' && a[1]=='0')
+//it can be extended to a[0]=='9' && a[1]=='9')
+  std::cout<<"\nUSD Ten "<<"thousand ";
+if(a[2]=='2')
+//it can be extended to a[2]=='9'
+  std::cout<<" two "<<" hundred ";
+if(a[3]=='3' && a[4]=='3')
+//it can be extended to a[3]=='9' && a[4]=='9')
+  std::cout<<" thirty three ";
+if(a[5]=='.')
+  std::cout<<" and "<<a[6]<<a[7]<<"/100 only";
+
+return 0;
+}
