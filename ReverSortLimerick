@@ -1,0 +1,54 @@
+
+////////////////////////////////////////////////////////////////////////////////
+//ReverSortLimerick: read a limerick,reverse it,sort it alphabetically 
+//code credit goes to John R. Hubbard,University of Richmond;
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <string>
+#include <cstring>
+void sort(char** a,int n=5)
+{
+char * t;
+for(int i=1;i<n;i++)
+   for(int j=0;j<n-i;j++)
+       if(strcmp(a[j],a[j+1])>0){
+         t=a[j];
+         a[j]=a[j+1];
+         a[j+1]=t;
+      }
+}
+
+int main()
+{
+    char buf[400];
+    std::cin.getline(buf,400,'*');
+   char *a[5];
+  int c=0;
+ char * p=buf;
+while (*p !='\0'){
+if(*p=='\n'){
+*p='\0';
+a[c++]=p+1;
+ }
+ p++;
+}
+std::cout<<"Original Limerick:\n\n";
+for(int i=0;i<c;i++)
+  std::cout<<a[i]<<"\n";
+
+std::cout<<"\n";
+std::cout<<"Limerick in reverse:\n\n";
+for(int i=c-1; i>=0;i--)
+std::cout<<a[i]<<"\n";
+sort(a,5);
+std::cout<<"\n";
+
+std::cout<<"Limerick after alphabetical sort:\n\n";
+for(int i=0;i<c;i++)
+  std::cout<<a[i]<<"\n";
+
+return 0;
+
+}
