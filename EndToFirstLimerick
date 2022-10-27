@@ -1,0 +1,27 @@
+
+///////////////////////////////////////////////////////////////////////////////
+//EndToFirstLimerick: read a limerick,print it in reverse  form last letter to first
+//this code and the limerick created by Rezaul Hoque on October 27,2022
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <cstring>
+
+int main()
+{
+char n[5][40],buf[40];
+int c=0;
+while(std::cin.getline(buf,40))
+  strcpy(n[c++],buf);
+std::cout<<"Limerick: \n";
+
+for(int i=0;i<c;i++)
+  std::cout<<n[i]<<"\n";
+std::cout<<"\nReveresed Limerick: \n";
+for(int i=0;i<c;i++){
+   for(int j=strlen(n[i])-1;j>=0;j--){
+    std::cout <<n[i][j];}
+ std::cout<<"\n";}
+return 0;
+}
