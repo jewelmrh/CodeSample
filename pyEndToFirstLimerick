@@ -1,0 +1,23 @@
+#######################################
+#pyEndToFirstLimerick:Python equivalent of C++ program EndToFirstLimerick
+#this code is  created by Rezaul Hoque on October 28,2022;
+#contact:jewelmrh@yahoo.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on rextester are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+######################################
+
+a= " "
+for z in range(5):
+  a += input()+"\n"
+
+for i in range(len(a)):
+   for j in range(len(a[i])):
+      print(a[i][j],end="")
+
+print()
+
+s=len(a)-1
+while s>=0:
+    print(a[s],end="")
+    s -=1
+
+
