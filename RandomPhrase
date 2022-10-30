@@ -1,0 +1,28 @@
+
+////////////////////////////////////////////////////////////////////////////////
+//RandPhrase: a function that prints a random sentence
+//this code is created by Rezaul Hoque on October 30,2022;
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+//////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <string>
+#include <ctime>
+
+void randPhrase(std::string * a,std::string* v,std::string* n){
+
+int index;
+srand(time(0));
+index=rand()%5;
+
+std::cout<<a[index]<<" "<<n[index]<<" "<<v[index]<<" "<<a[index+1]<<" "<<n[index+1]<<".\n";
+}
+
+int main()
+{
+std::string article [5]={"a","some","that","this","the"};
+std::string noun[5]={"dog","child","boy","girl","woman"};
+std::string verb[5]={"barked at","played with","kissed","spoke to","stared at"};
+randPhrase(article, verb,noun);
+return 0;
+}
