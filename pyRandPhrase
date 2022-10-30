@@ -1,0 +1,20 @@
+
+#######################################
+#pyRandPhrase: a function that prints a random sentence
+#this code is created by Rezaul Hoque on October 30,2022;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+######################################
+import random
+
+def randPhrase(a,v,n):
+   index=random.randrange(0,4,1)
+   print(a[index]+" "+n[index]+" "+v[index]+" "+a[index+1]+" "+n[index+1])
+
+article=["a","some","that","this","the"]
+noun=["dog","child","boy","girl","woman"]
+verb=["barked at","played with","kissed","spoke to","stared at"]
+
+randPhrase(article, verb,noun)
+
+
