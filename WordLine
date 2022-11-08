@@ -1,0 +1,47 @@
+
+//////////////////////////////////////////////////////////////////////////////
+//WordLine: count  number of words and lines in a given paragraph
+//this code is  created by Rezaul Hoque on November 08,2022;
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <cstring>
+#include <string>
+
+int main()
+{
+    char s[]="Today is a beautiful day and it is Tuesday! Yesterday was Monday. Tomorrow is Wednesday. ";
+  size_t n=sizeof(s)/sizeof(s[0]);
+int i=0;
+   char *p;
+  p=strtok(s,"  -(),.!");
+
+std::string c[n];
+for(int i=0;i<n;i++){
+   c[i]=" ";
+}
+int count=0;
+while(p){
+c[i]=p;
+p=strtok(NULL," -()");
+i++;
+count++;
+}
+
+for(int i=0;i<n;i++){
+std::cout<<c[i]<<" ";
+}
+
+std::cout<<"\n";
+std::cout<<" There are "<<count<<" words in this paragraph.\n";
+int line=0;
+
+for(int i=0;i<n;i++){
+if(s[i]=='.'||s[i]=='!')
+line++;
+}
+std::cout<<"  And there are "<<line<<" lines in this paragraph.\n";
+
+return 0;
+}
