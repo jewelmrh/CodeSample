@@ -1,0 +1,23 @@
+
+######################################
+#pyWordLine: Python equivalent of C++ program WordLine which counts number of words and lines in a given text
+#this code is  created by Rezaul Hoque on November 10,2022;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+######################################
+t="Today is a beautiful day and it is Thursday! Yesterday was Wednesday. Tomorrow is Friday."
+b=t.split(' ')
+w=0
+for i in range (0,len(b)):
+  if t.split(' '):
+      w +=1
+
+x='.'
+y='!'
+
+l=0
+for i in range(0,len(t)):
+ if t[i]==x or t[i]==y:
+    l +=1
+
+print("There are ",w," words and ",l," lines in this paragraph.")
