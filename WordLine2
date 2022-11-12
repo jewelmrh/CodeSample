@@ -1,0 +1,38 @@
+
+//////////////////////////////////////////////////////////////////////////////
+//WordLine2: count  number of words and lines in a given text using regular expressions
+//this code is  created by Rezaul Hoque on November 12,2022;
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <string>
+#include <regex>
+
+int main()
+{
+std::string s("Hi there! How are you? Come to my home when you are free.");
+std::regex r("\\w+");
+std::regex l("\\w+\\.|\\w+\\!|\\w+\\?");
+//word either ends with '?' or with '!' or with '.' is deemed a line; otherwise '...' in a paragraph is considered to be three lines! So the WordLine program written earlier is likey to encounter this problem
+
+  std::regex_iterator<std::string::iterator> regit(s.begin(),s.end(),r);    
+  std::regex_iterator<std::string::iterator> regitend;
+int words=0,lines=0;
+while(regit!=regitend){
+std::cout<<regit->str()<<"\n";
+regit++;
+words++;
+}
+
+  std::regex_iterator<std::string::iterator> regit2(s.begin(),s.end(),l);    
+
+while(regit2!=regitend){
+std::cout<<regit2->str()<<"\n";
+regit2++;
+lines++;
+}
+  std::cout << "There are " <<words<< " words and "<<lines<<" in this paragraph.\n";
+ 
+return 0;
+}
