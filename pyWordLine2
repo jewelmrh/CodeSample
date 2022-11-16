@@ -1,0 +1,29 @@
+
+######################################
+#pyWordLine2: Python equivalent of C++ program WordLine2 which counts number of words and lines in a given text using regular expressions
+#this code is  created by Rezaul Hoque on November 16,2022;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+#####################################
+import re
+
+s="Hi there! How are you? Come to see me if you are free."
+
+sample=['[$\s|$?\s|$.]']
+sample2=['[$\.|$!|$?]']
+
+for x in sample:
+  m=re.findall(x, s)
+  print(m)
+
+
+for y in sample2:
+  m2=re.findall(y, s)
+  print(m2)
+
+l1=str(len(m))
+l2=str(len(m2))
+
+print("There are "+l1+" words and "+l2+" lines in this text.")
+
+
