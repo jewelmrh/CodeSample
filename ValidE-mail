@@ -1,0 +1,49 @@
+
+//////////////////////////////////////////////////////////////////////////////
+//ValidE-mail: make sure an e-mail address is correct
+//this code is  created by Rezaul Hoque on November 16,2022
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <cctype>
+#include <cstring>
+void checkmail(char* s)
+{
+int count=0,a=0;
+for(int i=0;i<strlen(s);i++)
+{if(isspace(s[i]))
+ count++;
+
+if(s[i]=='@')
+ a++;
+ }
+
+//first and last characters cannot be digits
+if(isalpha(s[0])==0||isalpha(s[strlen(s)-1])==0)
+  std::cout<<"Not a correct e-mail address!It's not an alphabet!\n";
+//there should not be any empty space
+else if(count>0)
+    std::cout<<"No empty space.\n";
+//make sure '.' is inserted before 'com' or 'org' or 'gov'
+else if(s[strlen(s)-4]!='.')
+    std::cout<<"Not a correct e-mail address.\n";
+//'@' should be used only one time and '@' should not be placed after '.' or immediately before it
+else if(a>1||a==0||s[strlen(s)-1]=='@'||s[strlen(s)-2]=='@'||s[strlen(s)-3]=='@'||s[strlen(s)-4]=='@'||s[strlen(s)-5]=='@'||s[strlen(s)-6]=='@')
+    std::cout<<"Not a correct e-mail address.\n";
+//last three characters cannot be digits
+else if(isdigit(s[strlen(s)-1])>0||isdigit(s[strlen(s)-2])>0||isdigit(s[strlen(s)-3]>0))
+  
+    std::cout<<"Not a correct e-mail address.\n";
+else
+    std::cout<<"It's OK.\n";
+ }
+
+int main()
+{
+   char s[20];
+std::cin>>s;
+
+checkmail(s);
+return 0;
+}
