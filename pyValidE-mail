@@ -1,0 +1,38 @@
+
+###########################################
+#pyValidE-mail: Python equivalent of C++ program ValidE-mail that makes sure an e-mail address is correct
+#this code is  created by Rezaul Hoque on November 20,2022;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+###########################################
+
+def checkmail(s):
+     s=s
+     count=0
+     a=0
+     for i in range(0,len(s)):
+         if s[i].isspace()== True:
+           count += 1
+         if s[i]=="@":
+           a +=1
+     for i in range (1,7):
+         if  s[len(s)-i]=="@":
+            a=7
+
+     if s[0].isalpha()==False or  s[len(s)-1].isalpha()==False:
+        print("Not a correct e-mail address.\n")
+     elif count>0:
+        print("No empty space.\n")
+     elif s[len(s)-4] != ".":
+        print("Not a correct e-mail address.\n")
+     elif a>1 or a==0:
+        print("Not a correct e-mail address.\n")
+     elif  s[len(s)-1].isdigit()== True or s[len(s)-2].isdigit()==True or s[len(s)-3].isdigit()== True:
+        print("Not a correct e-mail address.\n")
+     else:
+        print("It's OK.\n")
+
+
+
+s=input("Enter e-mail:\n")
+checkmail(s)
