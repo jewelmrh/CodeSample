@@ -1,0 +1,141 @@
+
+//////////////////////////////////////////////////////////////////////////////
+//SaveOrangeTree: a quiz where wrong answer costs some part of an orange tree
+//this code is  created by Rezaul Hoque on November 20,2022
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <string>
+void welcome (){
+for (int k=0;k<35;k++){
+std::cout<<">";
+}
+std::cout<<"\n";
+for(int k=0;k<35;k++){
+std::cout<<"<";
+}
+std::cout<<"\n";
+std::cout<<"Welcome to the quiz!You have 5 questions.Each right answer will bring you 1 point.Wrong answer will cost you some part of your orange tree!Try to save the orange tree in one piece!\n";
+for (int k=0;k<35;k++){
+std::cout<<">";
+}
+std::cout<<"\n";
+for(int k=0;k<35;k++){
+std::cout<<"<";
+}
+std::cout<<"\n";
+}
+void Tree(int w){
+ if(w==1)
+    std::cout<<"--------------------------------------\n(^^^^^^^^o^^^^^^^o^)\n   (^^^^o^^^^^^^^^^)\n      \\\\\  ||  //  \n       \\\\\ || //     \n\t(    )   \n\t(    )   \n\t(    )   \n\t~~~~~~~~~~~\n\t~~~~~~~~~~~~\n";
+
+else if(w==2)
+
+    std::cout<<"--------------------------------------\n      \\\\\  ||  //  \n       \\\\\ || //     \n\t(    )   \n\t(    )   \n\t(    )   \n\t~~~~~~~~~~~\n\t~~~~~~~~~~~~\n";
+
+else if(w==3)
+
+    std::cout<<"--------------------------------------\n\t(    )   \n\t(    )   \n\t(    )   \n\t~~~~~~~~~~~\n\t~~~~~~~~~~~~\n";
+
+else if(w==4)
+
+    std::cout<<"--------------------------------------\n\t(    )   \n\t~~~~~~~~~~~\n\t~~~~~~~~~~~~\n";
+
+else if(w==5)
+   
+    std::cout<<"--------------------------------------\n\t(    )   \n\t~~~~~~~~~~~\n\t~~~~~~~~~~~~\n";
+
+else
+
+    std::cout<<"--------------------------------------\n(^^^o^^^^^^^^^^^^^^o^^^^)\n (^^^^^^^^^^o^^^^^^^^^)\n  (^^^^^^^^o^^^^^^^o^)\n   (^^^^o^^^^^^^^^^)\n      \\\\\  ||  //  \n       \\\\\ || //     \n\t(    )   \n\t(    )   \n\t(    )   \n\t~~~~~~~~~~~\n\t~~~~~~~~~~~~\n";
+}
+int main()
+{
+    
+std::string RightAns[]={"Everest","Amazon","Bering","Robin","Sailfish "};
+int score=0;
+int wrong=0;
+
+std::string ans;
+Tree(wrong);
+welcome();
+std::cout<<"What is the name of the highest peak of the world?\n";
+std::cout<<"(1)Alps "<<"(2) Mt. Everest "<<"(3) Kilimanjaro\n";
+std::cin>>ans;
+if (ans==RightAns[0])
+ {
+  std::cout<<" Right you are!\n";
+ 
+  ++score;}
+else
+  {wrong++;
+std::cout<<"That's not right\n";
+Tree(wrong);
+}
+
+std::cout<<"Which one is the longest river on earth?\n";
+std::cout<<"(1)Ganges "<<"(2) Mississippi "<<"(3) Amazon\n";
+std::cin>>ans;
+if(ans==RightAns[1]){
+  
+  std::cout<<" Right you are!\n";
+  
+ ++score;
+ }
+else
+  {wrong++;
+std::cout<<"That's not right.\n";
+Tree(wrong);}
+ 
+
+std::cout<<"Which strait lies between USA and Russia?\n";
+std::cout<<"(1) Palk "<<"(2) Hormuz "<<"(3) Bering \n";
+std::cin>>ans;
+if(ans==RightAns[2])
+  {
+  std::cout<<" Right you are!\n";
+ ++score;}
+else
+  {wrong++;
+std::cout<<"That's not right.\n";
+Tree(wrong);
+}
+
+std::cout<<"Which one is the natinal bird of Bangladesh?\n";
+std::cout<<"(1)Peacock "<<"(2) Hornbill "<<"(3) Robin\n";
+std::cin>>ans;
+if(ans==RightAns[3])
+  {
+  std::cout<<"Good!\n";
+ ++score;}
+else
+  {wrong++;
+std::cout<<"That's not right.\n";
+Tree(wrong);
+}
+
+std::cout<<"Which one is the fastest creature of ocean?\n";
+std::cout<<"(1)Dolphin "<<"(2)Sailfish "<<"(3)Penguin \n";
+std::cin>>ans;
+if(ans==RightAns[3])
+  {
+  std::cout<<"Good!\n";
+ ++score;}
+else
+  {wrong++;
+std::cout<<"That's not right.\n";
+Tree(wrong);
+}
+
+int m;
+m=score*10;
+std::cout<<"Your score is "<<m;
+if(m<30)
+  std::cout<<". Try better next time!\n";
+else if(m==30)
+ std::cout<<". Awesome!\n";
+Tree(wrong);
+return 0;
+}
+ 
