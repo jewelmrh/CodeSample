@@ -1,0 +1,47 @@
+
+////////////////////////////////////////////////////////////////////////////////
+//WordCombo:a program that reads a five-letter word from the user and produces all three-letter words that can be derived from that five-letter word;
+//pseudocode:
+//   -read used input
+//   - an array to hold all three-letter combinations
+//   - another array that holds the meaningful words; maybe a dictionary
+//   - a count variable to track match
+//   - match each element of combination array with the words found in a dictionary
+//   - if there is a match increment the count variable
+//   - finally print the total number of variable
+//this code is  created by Rezaul Hoque on November 23,2022
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <string>
+
+int main()
+{
+   std::string s[5];
+for(int i=0;i<5;i++)
+std::cin>>s[i];
+
+std::string a[60]={s[0]+s[1]+s[2],s[0]+s[2]+s[1],s[0]+s[1]+s[3],s[0]+s[3]+s[1],s[0]+s[1]+s[4],s[0]+s[4]+s[1],s[0]+s[2]+s[3],s[0]+s[3]+s[2],s[0]+s[4]+s[3],s[0]+s[3]+s[4],s[0]+s[2]+s[4],s[0]+s[4]+s[2],s[1]+s[0]+s[2],s[1]+s[2]+s[0],s[1]+s[0]+s[3],s[1]+s[3]+s[0],s[1]+s[0]+s[4],s[1]+s[4]+s[0],s[1]+s[2]+s[3],s[1]+s[3]+s[2],s[1]+s[4]+s[3],s[1]+s[3]+s[4],s[1]+s[2]+s[4],s[1]+s[4]+s[2],s[2]+s[1]+s[0],s[2]+s[0]+s[1],s[2]+s[1]+s[3],s[2]+s[3]+s[1],s[2]+s[1]+s[4],s[2]+s[4]+s[1],s[2]+s[0]+s[3],s[2]+s[3]+s[0],s[2]+s[4]+s[3],s[2]+s[3]+s[4],s[2]+s[0]+s[4],s[2]+s[4]+s[0],s[3]+s[1]+s[2],s[3]+s[2]+s[1],s[3]+s[1]+s[0],s[0]+s[3]+s[1],s[3]+s[1]+s[4],s[3]+s[4]+s[1],s[3]+s[2]+s[0],s[3]+s[0]+s[2],s[3]+s[4]+s[0],s[3]+s[0]+s[4],s[3]+s[2]+s[4],s[3]+s[4]+s[2],s[4]+s[1]+s[2],s[4]+s[2]+s[1],s[4]+s[1]+s[3],s[4]+s[3]+s[1],s[4]+s[1]+s[0],s[4]+s[0]+s[1],s[4]+s[2]+s[3],s[4]+s[3]+s[2],s[4]+s[0]+s[3],s[4]+s[3]+s[0],s[4]+s[2]+s[0],s[4]+s[0]+s[2] };
+
+for (int i=0;i<60;i++){
+std::cout<<a[i]<<" ";
+}
+
+//To make it concise the repository only contains the meaningful words from user input(here "CODER");otherwise, it may  contain a whole dictionary that identifies a combination as a word
+std::string repo[]={"COD","DOC","RED","ROD","ODE","ORE","CEO"};
+
+int n=sizeof(a)/sizeof(a[0]);
+int m=sizeof(repo)/sizeof(repo[0]);
+int count=0;
+for (int i=0;i<n;i++){
+if(a[i]==repo[0] || a[i]==repo[1] || a[i]==repo[2] || a[i]==repo[3] || a[i]==repo[4] || a[i]==repo[5] )
+  count++;
+}
+std::cout<<count<<" three-letter words can be formed from five-letter word ";
+
+for(int i=0;i<5;i++)
+std::cout<<s[i];
+
+return 0;
+}
