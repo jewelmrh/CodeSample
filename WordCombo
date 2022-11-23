@@ -2,7 +2,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //WordCombo:a program that reads a five-letter word from the user and produces all three-letter words that can be derived from that five-letter word;
 //pseudocode:
-//   -read used input
+//   -read user input
 //   - an array to hold all three-letter combinations
 //   - another array that holds the meaningful words; maybe a dictionary
 //   - a count variable to track match
