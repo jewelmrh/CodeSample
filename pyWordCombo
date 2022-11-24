@@ -1,0 +1,28 @@
+
+######################################
+#pyWordCombo: Python equivalent of C++ program WordCombo
+#this code is  created by Rezaul Hoque on November 24,2022;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+#####################################
+s=input()
+for i in range(len(s)):
+   print(s[i],end="")
+print("\n")
+
+a=[s[0]+s[1]+s[2],s[0]+s[2]+s[1],s[0]+s[1]+s[3],s[0]+s[3]+s[1],s[0]+s[1]+s[4],s[0]+s[4]+s[1],s[0]+s[2]+s[3],s[0]+s[3]+s[2],s[0]+s[4]+s[3],s[0]+s[3]+s[4],s[0]+s[2]+s[4],s[0]+s[4]+s[2],s[1]+s[0]+s[2],s[1]+s[2]+s[0],s[1]+s[0]+s[3],s[1]+s[3]+s[0],s[1]+s[0]+s[4],s[1]+s[4]+s[0],s[1]+s[2]+s[3],s[1]+s[3]+s[2],s[1]+s[4]+s[3],s[1]+s[3]+s[4],s[1]+s[2]+s[4],s[1]+s[4]+s[2],s[2]+s[1]+s[0],s[2]+s[0]+s[1],s[2]+s[1]+s[3],s[2]+s[3]+s[1],s[2]+s[1]+s[4],s[2]+s[4]+s[1],s[2]+s[0]+s[3],s[2]+s[3]+s[0],s[2]+s[4]+s[3],s[2]+s[3]+s[4],s[2]+s[0]+s[4],s[2]+s[4]+s[0],s[3]+s[1]+s[2],s[3]+s[2]+s[1],s[3]+s[1]+s[0],s[0]+s[3]+s[1],s[3]+s[1]+s[4],s[3]+s[4]+s[1],s[3]+s[2]+s[0],s[3]+s[0]+s[2],s[3]+s[4]+s[0],s[3]+s[0]+s[4],s[3]+s[2]+s[4],s[3]+s[4]+s[2],s[4]+s[1]+s[2],s[4]+s[2]+s[1],s[4]+s[1]+s[3],s[4]+s[3]+s[1],s[4]+s[1]+s[0],s[4]+s[0]+s[1],s[4]+s[2]+s[3],s[4]+s[3]+s[2],s[4]+s[0]+s[3],s[4]+s[3]+s[0],s[4]+s[2]+s[0],s[4]+s[0]+s[2]]
+
+for i in range(len(a)):
+  print(a[i],end=" ")
+
+repo=["COD","DOC","RED","ROD","ODE","ORE","CEO"]
+
+n=len(a)
+m=len(repo)
+count=0;
+for i in range (0,n):
+    if a[i]==repo[0] or a[i]==repo[1] or a[i]==repo[2] or a[i]==repo[3] or a[i]==repo[4] or a[i]==repo[5]:
+      count +=1
+
+print("\n",count," three-letter words can be formed from five-letter word "+s);
+
