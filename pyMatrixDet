@@ -1,0 +1,27 @@
+
+######################################
+#pyMatrixDet: Python equivalent of C++ program MatrixDet
+#this code is  created by Rezaul Hoque on December 04,2022;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+#####################################
+
+a=[[13,6,11],[12,9,4],[7,10,2]]
+for i in range (0,3):
+  print("\n")
+  for j in range(0,3):
+      print(a[i][j],end=" ")
+
+m11=a[1][1]*a[2][2]-a[1][2]*a[2][1]
+
+m12= a[1][0]*a[2][2]-a[1][2]*a[2][0]
+
+m13=a[1][0]*a[2][1]-a[1][1]*a[2][0]
+
+c11=pow(-1,2)*m11
+c12=pow(-1,3)*m12
+c13=pow(-1,4)*m13
+det=a[0][0]*c11+a[0][1]*c12+a[0][2]*c13
+print(" \n",det)
+
+
