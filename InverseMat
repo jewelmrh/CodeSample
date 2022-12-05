@@ -1,0 +1,94 @@
+
+/////////////////////////////////////////////////////////////////////////
+//InverseMat: get inverse of a matrix
+//Pseudocode:
+//   -create a 3x3 array holding 9 elements
+//   -calculate the minors along the 1st,2nd and 3rd rows
+//   -calculate the cofactors along the 1st,2nd and 3rd rows
+//   -calculate determinant of original matrix
+//   -create another 3x3 array to hold the cofactor matrix
+//   -print the array & determinant
+//   -print the cofactor matrix
+//   - Let adj be another 3x3 array 
+//   - copy transpose of cofactor matrix to adj
+//   -print adj matrix
+//   -create another 3x3 array named inv
+//   -copy adj x (1 divided by determinant of original matrix) to inv matrix
+//   -print inv matrix
+//   -print the results
+// this code is  created by Rezaul Hoque on December 05,2022
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <cmath>
+
+int main()
+{
+    int a[3][3]={4,1,-5,-2,3,1,3,-1,4};
+for(int i=0;i<3;i++){
+   std::cout<<"\n";
+  for(int j=0;j<3;j++)
+     std::cout<<a[i][j]<<" ";
+}
+int m11=a[1][1]*a[2][2]-a[1][2]*a[2][1];
+int m12= a[1][0]*a[2][2]-a[1][2]*a[2][0];
+int  m13=a[1][0]*a[2][1]-a[1][1]*a[2][0];
+
+int m21=a[0][1]*a[2][2]-a[0][2]*a[2][1];
+int m22= a[0][0]*a[2][2]-a[0][2]*a[2][0];
+int  m23=a[0][0]*a[2][1]-a[0][1]*a[2][0];
+
+int m31=a[0][1]*a[1][2]-a[0][2]*a[1][1];
+int m32= a[0][0]*a[1][2]-a[0][2]*a[1][0];
+int  m33=a[0][0]*a[1][1]-a[1][0]*a[0][1];
+int c11=pow(-1,2)*m11;
+int c12=pow(-1,3)*m12;
+int c13=pow(-1,4)*m13;
+
+int c21=pow(-1,3)*m21;
+int c22=pow(-1,4)*m22;
+int c23=pow(-1,5)*m23;
+
+int c31=pow(-1,4)*m31;
+int c32=pow(-1,5)*m32;
+int c33=pow(-1,6)*m33;
+
+int det=a[0][0]*c11+a[0][1]*c12+a[0][2]*c13;
+std::cout<<" \n\n"<<det;
+int c[3][3]={c11,c12,c13,c21,c22,c23,c31,c32,c33};
+
+for(int i=0;i<3;i++){
+   std::cout<<"\n";
+  for(int j=0;j<3;j++)
+     std::cout<<c[i][j]<<" ";
+}
+std::cout<<" \n";
+int adj[3][3];
+for(int i=0;i<3;i++)
+  for(int j=0;j<3;j++)
+     adj[i][j]=c[j][i];
+
+
+std::cout<<" \n";
+for(int i=0;i<3;i++){
+   std::cout<<"\n";
+  for(int j=0;j<3;j++)
+     std::cout<<adj[i][j]<<" ";
+}
+
+float e=0.01;
+float inv[3][3];
+
+for(int i=0;i<3;i++)
+  for(int j=0;j<3;j++)
+     inv[i][j]=adj[i][j]*e;
+
+std::cout<<" \n";
+for(int i=0;i<3;i++){
+   std::cout<<"\n";
+  for(int j=0;j<3;j++)
+     std::cout<<inv[i][j]<<" ";
+}
+return 0;
+}
