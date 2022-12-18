@@ -1,0 +1,102 @@
+
+//////////////////////////////////////////////////////////////////////////////
+//MatrixDiff: two rules of matrix differentiation
+//Pseudocode Development: 
+//First refinement: the two rules of differentiation :
+//   1) d(const . x )/dx =const
+//    2) d(const . x²)/dx  =2 const . x 
+//Second refinement:
+//    - the matrix form: 1)d(a'x)/dx =a' or a, here a' or a //    is mere representation of constant/coefficient vector and a' is 
+//    just transpose of a for ease of calculation;
+//    2)d(x'ax)/dx  =2ax or 2a'x where x'x is x²
+//
+//Third refinement:
+//    - create a column vector[2][1] for a and initialize it 
+//    with predefined elements
+//    - create another vector[2][2] for x and initialize it 
+//    with predefined elements
+//    -create a vector[1][2] for holding transpose of a
+//    - create another resultant vector[1][2] for holding 
+//     the product 2ax
+//    - print a for showing the first rule
+//    - print the resultant vector for showing second 
+//    rule
+//
+//Fourth refinement:
+//     - int a[2][1]={/*elements*/}
+//       -int x[2][2]={ /*elements*/}
+//       - int traa[1][2],res[1][2]
+//       - for i=0 to 1
+//            for j=0 to 1
+//                 traa[i][j]=a[j][i]
+//
+//        - for i=0 to 1
+//            print linebreak
+//            for j=0 to 1
+//               print  traa[i][j]
+//
+//         - print the rule for first differentiation
+//         - for i=0 to 1
+//            for j=0 to 1
+//                 print a[i][j]
+//
+//         - print the second rule for differentiation
+//         - for i=0 to 1
+//            for j=0 to 1
+//                 res[i][j]=0
+//                 for k=0 to 1
+//                    res[i][j]=res[i][j]+2*x[i][k]*a[k][j]
+//
+//         - for i=0 to 1
+//            for j=0 to 1
+//                 print res[i][j]
+//
+//this code is  created by Rezaul Hoque on December 18,2022
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+
+int main()
+{
+int a[2][1]={1,2};
+int x[2][2]={1,2,3,4};
+
+    int traa[1][2],res[1][2];
+for(int i=0;i<1;i++){
+  for(int j=0;j<2;j++)
+     traa[i][j]=a[j][i];
+}
+
+for(int i=0;i<1;i++){
+  std::cout<<"\n";
+  for(int j=0;j<2;j++)
+     std::cout<<" "<<traa[i][j];
+}
+
+std::cout<<"\nd(a'x)/dx :\n ";
+//d(a'x)/dx =a' or a
+for(int i=0;i<2;i++){
+  std::cout<<"\n";
+  for(int j=0;j<1;j++)
+     std::cout<<" "<<a[i][j];
+}
+
+std::cout<<"\nd(x'ax)/dx :\n ";
+//d(x'ax)/dx  =2ax or 2a'x
+
+for(int i=0;i<2;i++)
+  for(int j=0;j<1;j++){
+    res[i][j]=0;
+    for(int k=0;k<2;k++)
+      res[i][j]=res[i][j]+2*x[i][k]*a[k][j];
+}
+
+
+for(int i=0;i<2;i++){
+  std::cout<<"\n";
+  for(int j=0;j<1;j++)
+     std::cout<<" "<<res[i][j];
+}
+return 0;
+}
