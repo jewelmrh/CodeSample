@@ -1,0 +1,124 @@
+
+//////////////////////////////////////////////////////////////////////////////
+//Gaussian: Gaussian method to solve linear equations
+//Pseudocode Development:
+//First refinement:
+//    make two matrices: one for coefficients and another for constants; then transform both the coefficient and constant matrices in a way so that coefficient matrix becomes an identity matrix and constant matrix holds the solution
+//
+//Second refinement:
+//     -create a 2x2 coefficient vector and a 1x2 constant vector; also create other supporting matrices(a2..a5,x2..x5) to hold changes at different stages
+//     -print both the vectors
+//    - multiply first row of both vectors by the 1/(first 
+//    element of first row)
+//    -then subtract first element of second row times row 1 from row 2 of both vectors
+//    -multiply row 2 of both vectors by 1/( second
+//     element of the second row)
+//    -subtract second element (of second row) times //     second row from first row of both vectors 
+//    - print both the vectors
+//    - if the coefficient vector turns into a identity matrix then constant vector is the solution
+//this code is  created by Rezaul Hoque on December 18,2022
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+
+int main()
+{
+   float a2[2][2],a3[2][2],a[2][2]={3,6,5,4},a4[2][2],a5[2][2];
+ float x2[2][1],x3[2][1],x[2][1]={60,52},x4[2][1],x5[2][1];
+
+//step 1
+for(int i=0;i<2;i++){
+  for(int j=0;j<2;j++)
+     a2[i][j]=a[i][j];
+}
+for(int i=0;i<2;i++){
+  for(int j=0;j<2;j++){
+     a2[0][j]=a[0][j]*(1/a[0][0]);
+     x2[0][0]=x[0][0]*(1/a[0][0]);
+     a2[1][j]=a[1][j];
+     x2[1][0]=x[1][0];
+  }
+}
+for(int i=0;i<2;i++){
+  std::cout<<"\n";
+  for(int j=0;j<2;j++)
+     std::cout<<a2[i][j]<<" ";
+}
+
+for(int i=0;i<2;i++){
+  std::cout<<"\n";
+  for(int j=0;j<1;j++)
+     std::cout<<x2[i][j]<<" ";
+}
+
+//step2
+for(int i=0;i<2;i++){
+  for(int j=0;j<2;j++){
+     a3[1][j]=a2[1][j]-a2[0][j]*a2[1][0];
+     x3[1][0]=x2[1][0]-x2[0][0]*a2[1][0];
+     a3[0][j]=a2[0][j];
+     x3[0][0]=x2[0][0];
+   }
+  }
+
+for(int i=0;i<2;i++){
+  std::cout<<"\n";
+  for(int j=0;j<2;j++)
+     std::cout<<a3[i][j]<<" ";
+}
+
+for(int i=0;i<2;i++){
+  std::cout<<"\n";
+  for(int j=0;j<1;j++)
+     std::cout<<x3[i][j]<<" ";
+}
+//step 3
+
+for(int i=0;i<2;i++){
+  for(int j=0;j<2;j++){
+     a4[1][j]=a3[1][j]*(1/a3[1][1]);
+     x4[1][0]=x3[1][0]*(1/a3[1][1]);
+     a4[0][j]=a3[0][j];
+     x4[0][0]=x3[0][0];
+  }
+}
+
+for(int i=0;i<2;i++){
+  std::cout<<"\n";
+  for(int j=0;j<2;j++)
+     std::cout<<a4[i][j]<<" ";
+}
+
+for(int i=0;i<2;i++){
+  std::cout<<"\n";
+  for(int j=0;j<1;j++)
+     std::cout<<x4[i][j]<<" ";
+}
+//step 4
+
+for(int i=0;i<2;i++){
+  for(int j=0;j<2;j++){
+     a5[0][j]=a4[0][j]-a4[1][j]*a4[0][1];
+     x5[0][0]=x4[0][0]-x4[1][0]*a4[0][1];
+     a5[1][j]=a4[1][j];
+     x5[1][0]=x5[1][0];
+   }
+  }
+
+for(int i=0;i<2;i++){
+  std::cout<<"\n";
+  for(int j=0;j<2;j++)
+     std::cout<<a5[i][j]<<" ";
+}
+
+for(int i=0;i<2;i++){
+  std::cout<<"\n";
+  for(int j=0;j<1;j++)
+     std::cout<<x5[i][j]<<" ";
+}
+std::cout<<"\n x1: "<<x5[0][0]<<" x2: "<<x5[1][0];
+return 0;
+
+}
