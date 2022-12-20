@@ -1,0 +1,132 @@
+
+########################################
+#pyGaussian: Python equivalent of C++ program Gaussian
+#this code is  created by Rezaul Hoque on December 20,2022;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+#####################################
+a=[[3,6],[5,4]]
+x=[[60],[52]]
+#step1
+r,c=(2,2)
+a2=[[0]*c]*r
+
+rx,cx=(2,1)
+x2=[[0]*cx]*rx
+
+a2=list(map(list,a))
+x2=[row[:] for row in x]
+
+for i in range (0,2):
+    print("\n")
+    for j in range (0,2):
+       print(a2[i][j],end=" ")
+
+for i in x2:
+   for j in i:
+       print("\n",j,end="\n")
+
+for i in range(0,2):
+  for j in range (0,2):
+     a2[0][j]=a[0][j]*(1/a[0][0])
+     a2[1][j]=a[1][j]
+
+x2[0][0]=x[0][0]*(1/a[0][0])
+
+for i in range (0,2):
+    print("\n")
+    for j in range (0,2):
+       print(a2[i][j],end=" ")
+for i in range (0,2):
+   print(" \n")
+   for j in range (0,1):
+      print(x2[i][j],end=" ")
+#step2
+r3,c3=(2,2)
+a3=[[0]*c3]*r3
+
+rx3,cx3=(2,1)
+x3=[[0]*cx3]*rx3
+
+a3=list(map(list,a2))
+x3=[row[:] for row in x2]
+
+for i in range(0,2):
+  for j in range (0,2):
+     a3[1][j]=a2[1][j]-a2[0][j]*a2[1][0]
+     x3[1][0]=x2[1][0]-x2[0][0]*a2[1][0]
+     a3[0][j]=a2[0][j]
+
+x3[1][0]=x2[1][0]-x2[0][0]*a2[1][0]
+     
+for i in range (0,2):
+    print("\n")
+    for j in range (0,2):
+       print(a3[i][j],end=" ")
+for i in range (0,2):
+   print(" \n")
+   for j in range (0,1):
+      print(x3[i][j],end=" ")
+#step3
+
+r4,c4=(2,2)
+a4=[[0]*c4]*r4
+
+rx4,cx4=(2,1)
+x4=[[0]*cx4]*rx4
+
+a4=list(map(list,a3))
+x4=[row[:] for row in x3]
+
+
+for i in range(0,2):
+  for j in range (0,2):
+     a4[1][j]=a3[1][j]*(1/a3[1][1])
+     a4[0][j]=a3[0][j]
+     
+x4[1][0]=x3[1][0]*(1/a3[1][1])
+
+for i in range (0,2):
+    print("\n")
+    for j in range (0,2):
+       print(a4[i][j],end=" ")
+for i in range (0,2):
+   print(" \n")
+   for j in range (0,1):
+      print(x4[i][j],end=" ")
+
+#step4
+r5,c5=(2,2)
+a5=[[0]*c5]*r5
+
+rx5,cx5=(2,1)
+x5=[[0]*cx5]*rx5
+
+a5=list(map(list,a5))
+x5=[row[:] for row in x4]
+
+for i in range(0,2):
+  for j in range (0,2):
+     a5[0][j]=a4[0][j]-a4[1][j]*a4[0][1]
+     a5[1][j]=a4[1][j]
+     
+x5[0][0]=x4[0][0]-x4[1][0]*a4[0][1]
+     
+for i in range (0,2):
+    print("\n")
+    for j in range (0,2):
+       print(a5[i][j],end=" ")
+for i in range (0,2):
+   print(" \n")
+   for j in range (0,1):
+      print(x5[i][j],end=" ")
+
+
+
+     
+
+
+
+
+     
+
