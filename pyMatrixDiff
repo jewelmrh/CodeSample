@@ -1,0 +1,45 @@
+
+######################################
+#pyMatrixDiff: Python equivalent of C++ program MatrixDiff
+#this code is  created by Rezaul Hoque on December 21,2022;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+#####################################
+a=[[1],[2]]
+x=[[1,2],[3,4]]
+r,c=(1,2)
+r2,c2=(2,1)
+traa=[[0]*c]*r
+res=[[0 for i in range (c2)] for j in range(r2)]#this is the best way to initialize matrix in python
+
+for i in range(0,1):
+   for j in range (0,2):
+      traa[i][j]=a[j][i]
+
+for i in range(0,2):
+   print ("\n")
+   for j in range (0,1):
+      print(res[i][j],end=" ")
+
+for i in range(0,1):
+   print("\n")
+   for j in range (0,2):
+      print(traa[i][j],end=" ")
+
+print("\nd(a'x)/dx :\n ")
+for i in range(0,2):
+   print("\n")
+   for j in range (0,1):
+      print(a[i][j],end=" ")
+
+for i in range(len(x)):
+   for j in range (len(a[0])):
+       for k in range (len(a)):
+            res[i][j] +=2*x[i][k]*a[k][j]
+
+print(" \nd(x'ax)/dx :\n ")
+for i in range(0,2):
+   print("\n")
+   for j in range (0,1):
+      print(res[i][j],end=" ")
+
