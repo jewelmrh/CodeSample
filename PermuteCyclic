@@ -1,0 +1,39 @@
+    
+///////////////////////////////////////////////////////////////////////////////
+//PermuteCyclic 
+//this code is  created by Rezaul Hoque on December 27,2022
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+///////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <ctime>
+#include <cmath>
+
+int* getArr(int * a)
+{
+int n=5;
+srand(time(0));
+int index=rand()%n;
+static int b[5];
+for(int i=0;i<n;i++){
+  int k=i+index;
+   if (k>n){
+        k=k-n;  }
+   b[k]=a[i];}
+return b;
+}
+
+int main()
+{
+int m=5;
+int n=pow(5,3);
+srand(time(0));
+static int p[5];
+for(int i=0;i<m;i++)
+    p[i]=rand()%n;
+int *res;
+res=getArr(p);
+for(int i=0;i<m;i++)
+   std::cout<<res[i]<<" ";
+return 0;
+}
