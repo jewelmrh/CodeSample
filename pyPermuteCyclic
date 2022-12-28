@@ -1,0 +1,36 @@
+#python 3.6.9
+######################################
+#pyPermuteCyclic: Python equivalent of C++ program PermuteCyclic
+#this code is  created by Rezaul Hoque on December 28,2022;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+###########################################
+import random
+def getArr(a):
+  n=5
+  index=random.randrange(0,5,1)
+  b=[]*n
+  for i in range (0,n):
+     k=i+index
+     if(k>n):
+         k=k-n
+     b.append(a[i])
+  return b
+
+m=5
+n2=pow(5,3)
+p=[]*5
+p=[random.randrange(0,n2,1) for i in range(m)]
+
+res=[]*m
+res=getArr(p)
+
+for i in range (0,m):
+    print(res[i],end=" ")
+
+
+
+
+         
+    
+
