@@ -28,8 +28,8 @@ return (i+1);
 }
 int randpart(int* ar,int start,int end){
 srand(time(0));
-int i=rand()%8;
-swap(ar[end],ar[i]);
+int i=start+rand()%8;
+swap(ar[i],ar[end]);
 return partition(ar,start,end);
 }
 
