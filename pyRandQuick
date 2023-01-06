@@ -1,0 +1,47 @@
+
+import random
+
+###################################
+#pyRandQuick: Python equivalent of C++ program RandQuick
+#this code is  created by Rezaul Hoque on January 06,2023;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+###########################################
+def partition (ar,start,end):
+    piv=ar[end]
+    i=start-1
+    for j in range (start,end):
+      if ar[j]<piv:
+         i +=1
+         (ar[i],ar[j])=(ar[j],ar[i])
+    (ar[i+1],ar[end])=(ar[end],ar[i+1])
+
+    return (i+1)
+
+
+def randpart(ar,start,end):
+   i=start+random.randrange(0,8,1)
+   swap(ar[i],ar[end]);
+   return partition(ar,start,end);
+
+
+def quicksort(ar, start, end):
+  if start<end:
+    q=partition(ar,start, end)
+    quicksort(ar,start,q-1)
+    quicksort(ar,q+1,end)
+
+n=8
+a=[2,7,8,1,3,5,6,4]
+print("Before Quicksort:\n")
+for i in range(0,n):
+  print(a[i],end=" ")
+quicksort(a,0,n-1)
+print(" \n")
+print("After Quicksort:\n")
+for i in range(0,n):
+  print(a[i],end=" ")
+
+
+
+
