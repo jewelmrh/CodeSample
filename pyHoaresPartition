@@ -1,0 +1,49 @@
+
+######################################
+#pyHoaresPartition: 
+#this code is  created by Rezaul Hoque on January 08,2023;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.comDhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+######################################
+def partition(a,start,end):
+  piv=a[(start+end) //2]
+  i=start
+  j=end
+
+  while True:
+
+      
+          while a[i] < piv:
+            i +=1
+          while a[j] > piv:
+            j -=1
+          if i >= j:
+              return j
+
+          (a[i],a[j]) = (a[j],a[i])
+
+
+def quicksort(ar, start, end):
+  if start <end:
+     q=partition(ar,start,end)
+     quicksort(ar,start,q)
+     quicksort(ar,q+1,end)
+
+n=8
+a=[2,7,8,1,3,5,6,4]
+print("Before Quicksort:\n")
+for i in range(0,n):
+  print(a[i],end=" ")
+quicksort(a,0,n-1)
+print(" \n")
+print("After Quicksort:\n")
+for i in range(0,n):
+  print(a[i],end=" ")
+
+
+
+
+
+
+
+
