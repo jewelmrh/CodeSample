@@ -1,0 +1,64 @@
+
+//////////////////////////////////////////////////////////////////////////////
+//CountSort
+//this code is  created by Rezaul Hoque on January 12,2023
+//contact:jewelmrh@yahoo.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on rextester are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+///////////////////////////////////////////////////////////////////////////
+#include <iostream>
+void csort(int *a,int sz){
+int res[sz];
+int c[sz];
+int max=a[0];
+for(int i=0;i<sz;i++)
+{
+  if(a[i]>max)
+        max=a[i];
+}
+
+for(int i=0;i<=max;i++)
+{
+   c[i]=0;
+}
+
+
+for(int i=0;i<sz;i++)
+{
+ c[a[i]]=c[a[i]]+1;
+}
+
+for(int i=1;i<=max;i++)
+{
+c[i]=c[i]+c[i-1];
+}
+
+for(int i=sz-1;i>=0;i--)
+{
+res[c[a[i]]-1]=a[i];
+c[a[i]]=c[a[i]]-1;
+}
+for(int i=0;i<sz;i++)
+{
+ a[i]=res[i];
+}
+}
+
+int main()
+{
+    int a[]={9,7,5,2,2,9,1,5};
+int sz=sizeof(a)/sizeof(a[0]);
+std::cout<<"Before sort:\n";
+
+for(int i=0;i<sz;i++)
+{
+std::cout<<a[i]<<" ";
+}
+csort(a,sz);
+
+std::cout<<"\nAfter sort:\n";
+for(int i=0;i<sz;i++)
+{
+std::cout<<a[i]<<" ";
+}
+return 0;
+}
