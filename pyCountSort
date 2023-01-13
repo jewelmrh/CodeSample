@@ -1,0 +1,41 @@
+
+######################################
+#pyCountSort
+#this code is  created by Rezaul Hoque on January 13,2023;
+#contact:jewelmrh@yahoo.com;rhoque4478 @gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+#####################################
+def csort(a):
+  sz=len(a)
+  res=[0 for i in range(sz)]
+
+  c=[0 for i in range(256)]
+
+  for i in range(sz):
+        c[a[i]] +=1
+
+  for j in range (1,256):
+      c[j]=c[j]+c[j-1]
+
+  i=sz-1
+  while i>=0:
+     res[c[a[i]]-1]=a[i]
+     c[a[i]]=c[a[i]]-1
+     i -=1
+
+  for j in range (0,sz):
+      a[j]=res[j]
+
+
+a=[9,7,5,2,2,9,1,5]
+print("Before sort :")
+print (a)
+csort(a)
+print ("After sort :")
+print(a)
+
+
+
+
+
+
