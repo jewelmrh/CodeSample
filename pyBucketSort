@@ -1,0 +1,49 @@
+
+######################################
+#pyBucketSort
+#bucketSort() code credit goes to programiz.com;rest is  created by Rezaul Hoque on January 15,2023;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+#####################################
+def insort(a):
+  
+   for i in range (1,len(a)):
+     temp=a[i]
+     j=i-1
+
+     while j>=0 and a[j]>temp:
+          a[j+1]=a[j]
+          j -=1
+
+     a[j+1]=temp
+
+def bucketSort(arr, n):
+     
+   
+    b = []
+    for i in range(n):
+        b.append([])
+         
+    for i in range(n):
+        id= int(n*arr[i])
+        b[id].append(arr[i])
+     
+    
+    insort(b)
+    
+    index = 0
+    arr.clear()
+    for i in range(n):
+        for j in range(len(b[i])):
+            arr.append(b[i][j])
+ 
+
+
+     
+    
+
+
+arr = [-0.897, 0.565, 0.776, -0.1234, 0,0.665, 0.3434]
+bucketSort(arr, len(arr))#flawed only buckets get sorted,not elements inside individual bucket
+print("Sorted Array is")
+print(arr)
