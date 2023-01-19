@@ -1,0 +1,59 @@
+
+######################################
+#pyTemplateBinTree
+#this code is created by Rezaul Hoque on January 18,2023;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+######################################
+class Node:
+         def __init__(self,data):
+                  self. data=data
+                  self.left=None
+                  self.right=None
+
+def  insert(node,data):
+     if node is None:
+               return Node(data)
+     if data<node.data:
+               node.left=insert(node.left,data)
+     else:
+               node.right=insert(node.right, data)
+
+     return node
+
+def inorder(root):
+    if root is not None:
+       inorder(root.left)
+       print(str(root.data)+"->",end=" ")
+       inorder(root.right)
+
+
+def preorder(root):
+    if root is not None:
+       print(str(root.data)+"->",end=" ")
+       preorder(root.left)
+       preorder(root.right)
+
+def postorder(root):
+    if root is not None:
+       postorder(root.left)
+       postorder(root.right)
+       print(str(root.data)+"->",end=" ")
+
+
+croot =None
+croot = insert(croot,'E');
+croot = insert(croot,'D');
+croot = insert(croot,'C');
+croot = insert(croot,'F');
+croot = insert(croot,'G');
+
+print("Preorder traversal:\n")
+preorder(croot)
+print("\nInorder traversal:\n")
+inorder(croot)
+
+print("\nPostorder traversal:\n")
+postorder(croot)
+
+       
