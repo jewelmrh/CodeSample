@@ -1,0 +1,88 @@
+
+######################################
+#pyBSTSearchPredSuc
+#PredSuc() code credit goes to geeksforgeeks.com; the rest of the code is created by Rezaul Hoque on January 23,2023;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+######################################
+class Node:
+         def __init__(self,data):
+                  self. data=data
+                  self.left=None
+                  self.right=None
+
+def  insert(node,data):
+     if node is None:
+               return Node(data)
+     if data<node.data:
+               node.left=insert(node.left,data)
+     else:
+               node.right=insert(node.right, data)
+
+     return node
+
+def search(root,item):
+    while root is not  None and (item != root.data): 
+      if item<root.data:
+          root=root.left
+      else:
+          root=root.right
+    return root
+       
+def PredSuc(root,item):
+     if root is None:
+        return
+
+     if root.data==item:
+        if root.left is not None:
+             x=root.left
+             while(x.right):
+                 x=x.right
+             PredSuc.pred=x
+
+      
+        if root.right is not None:
+             x=root.right
+             while(x.left):
+                 x=x.left
+             PredSuc.suc=x
+        return
+
+     if root.data>item:
+       PredSuc.suc=root
+       PredSuc(root.left,item)
+     else:
+       PredSuc.pred=root
+       PredSuc(root.right,item)
+
+
+         
+
+croot =None
+croot = insert(croot,'E');
+caroot = insert(croot,'D');
+croot = insert(croot,'C');
+croot = insert(croot,'F');
+croot = insert(croot,'G');
+
+item="H"
+z=search(croot,item)
+if (z):
+   print(" \n",item," is found ")
+else:
+    print("\n",item," is not found")
+k="F"
+PredSuc(croot,k)
+
+if(PredSuc.pred):
+    print ("Predecessor of ",k," is ",PredSuc.pred.data)
+     
+else:
+    print("\nNo predecessor\n")
+
+if(PredSuc.suc):
+    print ("Successor of ",k," is ",PredSuc.suc.data)
+
+else:
+    print("\nNo successor\n")
+     
