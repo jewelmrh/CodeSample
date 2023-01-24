@@ -1,0 +1,124 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//BSTSearchPredSuc
+//PredSuc code credit goes to geeksforgeeks.com.rest of the code is created by Rezaul Hoque on January 24,2023
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <bits/stdc++.h>
+using namespace std;
+ template <class T>
+class node {
+public:
+    T data;
+     node<T> *left, *right;
+};
+ 
+//  create a new BST node
+template <class T>
+ node<T>* addNew(T item)
+{
+     node<T>* temp
+        = (node<T>*)malloc(sizeof( node<T>));
+    temp->data = item;
+    temp->left = temp->right = NULL;
+    return temp;
+}
+ 
+
+template <class T>
+node<T>* search( node<T>* root,T item)
+{
+    while (root != NULL && item != root->data) {
+        if (item<root->data){
+            root=root->left;
+         }
+         else
+         { root=root->right;
+    }
+}
+ return root;
+ 
+}
+
+template <class T>
+void PredSuc( node<T> * root,node<T>*& pre,node<T>*& suc,T item) {
+  if (root == NULL)
+     return;
+  if (root->data==item){
+      if(root->left !=NULL) {
+          node<T>* x=root->left;
+          while (x->right)
+               x=x->right;
+          pre=x;
+             }
+          
+      if(root->right !=NULL) {
+          node<T>* x=root->right;
+          while (x->left)
+               x=x->left;
+          suc=x;
+             }
+     return;
+   }
+  if(item<root->data){
+      suc=root;
+      PredSuc(root->left,pre,suc,item);
+   }
+  if(item>root->data){
+      pre=root;
+      PredSuc(root->right,pre,suc,item);
+   }
+}
+
+
+ 
+
+ template <class T>
+ node<T>* insert( node<T>* node, T d)
+{
+    
+    if (node == NULL)
+        return addNew(d);
+    if (d < node->data)
+        node->left = insert(node->left, d);
+    else
+        node->right = insert(node->right, d);
+ 
+    
+    return node;
+}
+
+int main()
+{
+node<char>* croot = NULL;
+croot = insert(croot,'E');
+croot = insert(croot,'D');
+croot = insert(croot,'C');
+croot = insert(croot,'F');
+croot = insert(croot,'G');
+
+char item='H';
+node<char>* z=search(croot,item);
+if (z)
+   cout<<"\n"<<item<<" is found\n ";
+else
+    cout<<"\n"<<item<<" is not found\n";
+node<char>* pre=NULL;
+node<char>* suc=NULL;
+char k='F';
+
+PredSuc(croot,pre,suc,k);
+if(pre)
+    cout<<"\nPredecessor of "<<k<<" is "<<pre->data;
+
+else
+    cout<<"\nNo predecessor\n";
+
+
+if(suc)
+    cout<<"\nSuccessor of "<<k<<" is "<<suc->data;
+
+else
+    cout<<"\nNo successor\n";
+return 0;
+}
