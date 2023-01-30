@@ -1,0 +1,132 @@
+/////////////////////////////////////////////////////
+//javaBSTSearchPredSuc
+//this code is  created by Rezaul Hoque on January 29,2023
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////
+import java.util.*;
+class Wrap
+{
+ 
+
+static class Node
+{
+    int key;
+    Node left, right;
+public Node(int data){
+key=data;
+left=right=null;
+}
+};
+static Node pre;
+static Node suc;
+ 
+
+static void PreSuc(Node root, int key)
+{
+    if (root == null)
+        return;
+ 
+   
+    while (root != null)
+    {
+ 
+       
+        if (root.key == key)
+        {
+ 
+           
+            if (root.right != null)
+            {
+                suc = root.right;
+                while (suc.left != null)
+                    suc = suc.left;
+          }
+            if (root.left != null)
+            {
+                pre = root.left;
+                while (pre.right != null)
+                    pre = pre.right;
+            }
+            return;
+        }
+ 
+        
+        else if (root.key < key)
+        {
+            pre = root;
+            root = root.right;
+        }
+ 
+        
+        else
+        {
+            suc = root;
+            root = root.left;
+        }
+    }
+}
+ 
+static Node search(Node root,int data){
+while( root !=null && data!= root.key){
+if(data<root.key){
+   root=root.left;
+ }
+else
+{
+root=root.right;
+}
+}
+return root;
+}
+ 
+
+static Node insert(Node node, int key)
+{
+    if (node == null){
+Node temp = new Node(key);
+    return temp;
+        }
+    if (key < node.key)
+        node.left = insert(node.left, key);
+    else
+        node.right = insert(node.right, key);
+    return node;
+}
+ 
+
+public static void main(String[] args)
+{
+ 
+    
+    Node root = null;
+    root = insert(root, 95);
+    insert(root, 30);
+    insert(root, 28);
+    insert(root, 55);
+    insert(root, 67);
+    insert(root, 100);
+    insert(root, 110);
+ 
+int data=90;
+Node z=search(root,data);
+if(z!=null)
+        System.out.println(data+" is found");
+else
+       System.out.println(data+" is not found");
+
+    int key = 35; 
+    PreSuc(root, key);
+    if (pre != null)
+        System.out.println("Predecessor of "+key+" is " +
+                                     pre.key);
+    else
+        System.out.print("No predecessor");
+ 
+    if (suc != null)
+        System.out.print("Successor of "+key+" is " + suc.key);
+    else
+        System.out.print("No successor");
+    }
+}
+ 
