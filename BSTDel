@@ -1,0 +1,178 @@
+
+//////////////////////////////////////////////////////////////////////////////
+//BSTDel:Deletion in Binary Search Tree
+//searchkey() and del() code credit go to techiedelight.com; rest of the code is created by Rezaul Hoque on February 01,2023
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <bits/stdc++.h>
+
+ template <class T>
+class node {
+public:
+    T data;
+     node<T> *left,*right;
+};
+ template <class T>
+ node<T>* addNew(T item)
+{
+     node<T>* temp
+        = (node<T>*)malloc(sizeof( node<T>));
+    temp->data = item;
+    temp->left = temp->right = NULL;
+    return temp;
+}
+
+
+ template <class T>
+ node<T>* insert( node<T>* node, T d)
+{
+    
+    if (node == NULL)
+        return addNew(d);
+    if (d < node->data)
+        node->left = insert(node->left, d);
+    else
+        node->right = insert(node->right, d);
+ 
+    
+    return node;
+}
+
+template <class T>
+ node<T>* minVal( node<T>* node){
+       
+while( node && node->left != NULL){
+  node=node->left;}
+return node;
+}
+
+template <class T>
+void inorder(node<T>* node){
+  if(node !=NULL){
+   inorder(node->left);
+   std::cout<<node->data<<" ";
+   inorder(node->right);
+}
+}
+    
+template <class T>
+void searchKey(node<T>* &curr, T key, node<T>* &parent)
+{
+	// traverse the tree and search for the key
+	while (curr != nullptr && curr->data != key)
+	{
+		// update the parent to the current node
+		parent = curr;
+
+		// if the given key is less than the current node, go to the left subtree;
+		// otherwise, go to the right subtree
+		if (key < curr->data) {
+			curr = curr->left;
+		}
+		else {
+			curr = curr->right;
+		}
+	}
+}
+
+// Function to delete
+template <class T>
+void del(node<T>*& root, T key)
+{
+	// pointer to store the parent of the current node
+	node<T>* parent = nullptr;
+
+	// start with the root node
+	node<T>* curr = root;
+
+	// search key in the BST and set its parent pointer
+	searchKey(curr, key, parent);
+
+	// return if the key is not found in the tree
+	if (curr == nullptr) {
+		return;
+	}
+
+	// Case 1: node to be deleted has no children, i.e., it is a leaf node
+	if (curr->left == nullptr && curr->right == nullptr)
+	{
+		// if the node to be deleted is not a root node, then set its
+		// parent left/right child to null
+		if (curr != root)
+		{
+			if (parent->left == curr) {
+				parent->left = nullptr;
+			}
+			else {
+				parent->right = nullptr;
+			}
+		}
+		// if the tree has only a root node, set it to null
+		else {
+			root = nullptr;
+		}
+
+		// deallocate the memory
+		free(curr);		// or delete curr;
+	}
+
+	// Case 2: node to be deleted has two children
+	else if (curr->left && curr->right)
+	{
+		// find its inorder successor node
+		node<T>* successor = minVal(curr->right);
+
+		// store successor value
+		int val = successor->data;
+
+		// recursively delete the successor. Note that the successor
+		// will have at most one child (right child)
+		del(root, successor->data);
+
+		// copy value of the successor to the current node
+		curr->data = val;
+	}
+
+	// Case 3: node to be deleted has only one child
+	else {
+		// choose a child node
+		node<T>* child = (curr->left)? curr->left: curr->right;
+
+		// if the node to be deleted is not a root node, set its parent
+		// to its child
+		if (curr != root)
+		{
+			if (curr == parent->left) {
+				parent->left = child;
+			}
+			else {
+				parent->right = child;
+			}
+		}
+
+		// if the node to be deleted is a root node, then set the root to the child
+		else {
+			root = child;
+		}
+
+		// deallocate the memory
+		free(curr);
+	}
+}
+
+int main()
+{
+node<char>* croot = NULL;
+croot = insert(croot,'E');
+croot = insert(croot,'D');
+croot = insert(croot,'C');
+croot = insert(croot,'F');
+croot = insert(croot,'G');
+inorder(croot);
+std::cout<<" \n";
+del(croot,'F');
+inorder(croot);
+return 0;
+}
+
