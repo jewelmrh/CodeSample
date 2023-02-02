@@ -1,0 +1,69 @@
+
+#########################################################################
+#pyBSTDel
+#Del() code credit goes to geeksforgeeks.com;(For more see https://www.geeksforgeeks.org/deletion-in-binary-search-tree/;)
+# the rest of the code is created by Rezaul Hoque on February 02,2023;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+####################################################################
+class Node:
+         def __init__(self,data):
+                  self. data=data
+                  self.left=None
+                  self.right=None
+
+def  insert(node,data):
+     if node is None:
+               return Node(data)
+     if data<node.data:
+               node.left=insert(node.left,data)
+     else:
+               node.right=insert(node.right, data)
+
+     return node
+
+def inorder(root):
+    if root is not None:
+       inorder(root.left)
+       print(root.data,end=" ")
+       inorder(root.right)
+    
+def minVal(x):
+    while (x.left is not None):
+       x=x.left
+    return x
+
+def Del(x,item):
+    if x is None:
+       return x
+
+    if (item<x.data):
+      x.left=Del(x.left,item)
+    elif(item>x.data):
+      x.right=Del(x.right,item)
+    else:
+      if x.left is None:
+         t=x.right
+         x=None
+         return t
+
+      if x.right is None:
+         t=x.left
+         x=None
+         return t
+
+      t = minVal(x.right)
+      x.item=t.item
+      x.right=Del(x.right, t.data)
+      return x
+
+croot =None
+croot = insert(croot,'E');
+caroot = insert(croot,'D');
+croot = insert(croot,'C');
+croot = insert(croot,'F');
+croot = insert(croot,'G');
+inorder(croot)
+Del(croot,'F')
+print(" \n")
+inorder(croot)
