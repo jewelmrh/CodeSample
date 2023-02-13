@@ -1,0 +1,43 @@
+
+#######################################################################
+#pyGreedyKnap: Python equivalent of C++ GreedyKnap
+#this code is  created by Rezaul Hoque on February 13,2023;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+#####################################################################
+class Knap:
+      def __init__(self,v,w):
+                  self.v=v
+                  self.w=w
+                  self.r=v/w
+
+def ksort( x,y):
+   if(x.r>y.r):
+      temp=x
+      x=y
+      y=temp
+
+
+def greedKnap(cap,a,n):
+  
+  i=0
+  while (i>n):
+      ksort(a[i],a[i+1])
+  i +=1
+  res=0.0
+  for i in range (0,n):
+    if(a[i].w<=cap):
+      cap -= a[i].w
+      res += a[i].v
+    else:
+       res += a[i].v*cap/a[i].w
+       break
+
+  return res
+
+cap=50
+s=[Knap(60,10),Knap(100, 20),Knap(120, 30)]
+n = len(s)
+print(greedKnap(cap,s,n))
+
+
