@@ -1,0 +1,66 @@
+////////////////////////////////////////////////////////////////////////////////
+//HuffmanCode
+//comLR() and Huffman () codes credit go to cppsecrets.com;For more read at https://cppsecrets.com/users/14739971109711010010097115971101054864103109971051084699111109/C00-Program-for-Huffman-Code.php
+//rest of the code and modifications are created by Rezaul Hoque on February 15,2023;
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <queue>
+#include <string>
+#include <vector>
+class minNode{
+char data;
+int freq;
+public:
+minNode* left,*right;
+
+minNode(char c,int f){left=right=NULL;data=c;freq=f;}
+char getC(){return data;}
+int getF(){return freq;}
+};
+class comLR{
+public:
+bool operator()( minNode* l,minNode* r){return (l->getF()>r->getF());
+}
+};
+void display(minNode * root,std::string s){
+if(root==NULL)
+return;
+if(root->getC()!='*')
+  std::cout<<root->getC()<<"    -    "<<s<<" \n";
+ display(root->left,s+"0");
+ display (root->right, s+"1");
+}
+void Huffman (char c[],int f [],int n){
+minNode * left,*right,*top;
+std::priority_queue<minNode*,std::vector<minNode*>,comLR> H;
+int i=0;
+while (i<n){
+  H.push(new minNode(c[i],f[i]));
+++i;}
+  while (H.size() !=1){
+    left= H.top();
+    H.pop();
+
+    right=H.top();
+    H.pop();
+    top=new minNode('*',left->getF()+right->getF());
+
+   top->left=left;
+   top->right=right;
+   H.push(top);
+  }
+  std::cout<<"Character  Code:\n";
+  display (H.top()," ");
+}
+
+
+int main()
+{
+    char c[]={'z','t','a','r','p','w'};
+   int freq []={10,12,50,3,7};
+int n=sizeof(c)/sizeof(c[0]);
+Huffman(c,freq,n);
+return 0;
+}
