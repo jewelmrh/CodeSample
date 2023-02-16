@@ -1,0 +1,47 @@
+
+#########################################################################
+#pyHuffmanCode
+#code credit goes to geeksforgeeks.com;(For more see at https://www.geeksforgeeks.org/huffman-coding-greedy-algo-3/)
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+####################################################################
+class Node:
+import heapq
+class mNode:
+   def __init__(self,data,freq,left=None,right=None):
+             self.data=data
+             self.freq=freq
+             self.left=left
+             self. right=right
+             self.huff=' '
+
+
+   def __lt__(self,next):
+             return  self.freq<next.freq
+
+def display(mNode, val=' '):
+             nVal=val+str(mNode.huff)
+             if (mNode.left):
+                display (mNode.left,nVal)
+             if (mNode.right):
+                display (mNode.right,nVal)
+
+             if (not mNode.left and not mNode.right):
+                print(f"{mNode.data} -  {nVal}")
+
+                 
+
+s = ['a', 'b', 'c', 'd', 'e', 'f']
+freq = [ 5, 9, 12, 13, 16, 45]
+nodes = []
+
+for x in range(len(s)):
+               heapq.heappush(nodes,mNode(s[x],freq[x]))
+while len(nodes)>1:
+               left=heapq.heappop(nodes)
+               right=heapq.heappop(nodes)
+               left.huff=0
+               right.huff=1
+               nNode= mNode(left.data+right.data,left.freq+right.freq,left,right)
+               heapq.heappush(nodes,nNode)
+display (nodes[0])
+ 
