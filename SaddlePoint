@@ -1,0 +1,79 @@
+
+//////////////////////////////////////////////////////////////////////////////
+//SaddlePoint:finding saddle point of 2-player zero-sum game
+//Pseudocode development:
+//--two players: one's gain is other's loss
+//--get the minimum values across the rows
+//--get the maximum of the minimum row values
+//-- get the maximum values across the column
+//--get the minimum of the maximum column values
+//-- if the maximin equals minimax then it's a saddle point
+//
+//this code is  created by Rezaul Hoque on February 26,2023
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////
+#include <iostream>
+void insert(int a[3][3],int n){
+
+for(int i=0;i<3;i++)
+  for(int j=0;j<3;j++){
+std::cin>>a[i][j];
+}
+}
+void saddle(int a[3][3],int n){
+
+int row[3];
+for(int i=0;i<3;i++){
+int min=a[i][0];
+  for (int j=1;j<3;j++){
+ if (min>a[i][j])
+  min=a[i][j];}
+row[i]=min;
+}
+std::cout<<"Minimum row values: \n";
+for(int i=0;i<3;i++){
+std::cout<<row[i]<<" ";
+}
+std::cout<<" \n";
+int maxmin=row[0];
+for(int i=0;i<3;i++){
+if(maxmin<row[i])
+   maxmin=row[i];
+}
+std::cout<<"Maximin:\n";
+std::cout<<maxmin<<"\n";
+
+int col[3];
+for(int j=0;j<3;j++){
+int max=a[0][j];
+  for (int i=1;i<3;i++){
+ if (max<a[i][j])
+  max=a[i][j];}
+col[j]=max;
+}
+std::cout<<"Maximum column values: \n";
+for(int i=0;i<3;i++){
+std::cout<<col[i]<<" ";
+}
+std::cout<<"\n";
+int minmax=col[0];
+for(int i=0;i<3;i++){
+if(minmax>col[i])
+   minmax=col[i];
+}
+std::cout<<"Minimax:\n";
+std::cout<<minmax<<"\n";
+
+if(maxmin==minmax) std::cout<<"\nSaddle point";
+else 
+     std::cout<<"No saddle point\n";
+}
+
+int main()
+{
+  int a[3][3];
+insert(a,3);
+saddle(a,3);
+return 0;
+}
