@@ -1,0 +1,66 @@
+
+########################################
+#pySaddlePoint: Python equivalent of C++ program SaddlePoint
+#this code is  created by Rezaul Hoque on February 27,2023;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+#####################################
+def insert(a,n):
+    for i in range(0,n):
+       inp=[]
+       for j in range(0,n):
+           inp.append(int(input()))
+       a.append(inp)
+
+def saddle(a, n):
+     row=[]
+     for i in range(n):
+          min=a[i][0]
+          for j in range(1,n):
+                if(min>a[i][j]):
+                    min=a[i][j]
+          row.append(min)
+
+     print("Minimum row values:\n")
+     for i in range (len(row)):
+          print(row[i],end=" ")
+
+     print("\n")
+     maxmin=row[0]
+     for i in range (len(row)):
+          if(maxmin<row[i]):
+               maxmin=row[i]
+
+     print("Maximin:\n")
+     print(maxmin,"\n")
+     
+     col=[]
+     for j in range(n):
+          max=a[0][j]
+          for i in range(1,n):
+               if(max<a[i][j]):
+                  max=a[i][j]
+          col.append(max)
+
+     print("Maximum column values: \n")
+     for i in range(len(col)):
+          print(col[i],end=" ")
+
+     print("\n")
+     minmax=col[0]
+     for i in range(len(col)):
+          if(minmax>col[i]):
+                 minmax=col[i]
+
+     print("Minmax:\n")
+     print(minmax,"\n")
+
+     if(maxmin==minmax):
+          print ("\nSaddle point")
+     else:
+          print("No saddle point\n")
+
+
+a=[]
+insert(a,3)
+saddle(a,3)
