@@ -1,0 +1,47 @@
+#python 3.6.9
+
+######################################
+#pyMixedStrategy(2x2): Python equivalent of C++ program MixedStrategy(2x2)
+#this code is  created by Rezaul Hoque on February 28,2023;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+#####################################
+def insert(a,n):
+   for i in range(0,n):
+       inp=[]
+       for j in range(0,n):
+           inp.append(int(input()))
+       a.append(inp)
+def ProbA(a):
+   i=0
+   j=0
+   p=(a[i+1][j+1]-a[i+1][j])/((a[i][j]+a[i+1][j+1]-a[i+1][j]-a[i][j+1]))
+   return p
+
+def ProbB(a):
+   i=0
+   j=0
+   q=(a[i+1][j+1]-a[i][j+1])/((a[i][j]+a[i+1][j+1]-a[i+1][j]-a[i][j+1]))
+   return q
+
+def value(a,p):
+    i=0
+    j=0
+    v=p*a[i][j]+(1-p)*a[i+1][j]
+    return v
+
+a=[]
+insert(a,2)
+for i in range(0,2):
+   print ("\n")
+   for j in range (0,2):
+        print (a[i][j],end=" ")
+
+p=ProbA(a)
+q=ProbB(a)
+print("\n     strategy1(prob)  strategy 2(prob)\n")
+print("\nPlayer1:    ",p,"       ",1-p," \n")
+print ("\nPlayer2:    ",q,"       ",1-q," \n")
+print ("Value of the game:\n",value(a,p),"\n")
+
+
