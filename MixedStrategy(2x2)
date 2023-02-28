@@ -1,0 +1,73 @@
+
+//////////////////////////////////////////////////////////////////////////////
+//MixedStrategy(2x2):
+//Pseudocode development:
+//--two players
+//-- with no saddle point or pure strategy, they have to play mixed strategy
+//--player 1 picks strategy 1 with probability p and strategy 2 with probability (1-p) where 0<=p<=1.
+//--similarly, player 2 picks strategy 1 with probability q and strategy 2 with probability (1-q) where 0<=q<=1.
+//-- to be indifferent to whatever strategy other selects,each one hopes his outcomes will be equal for each of rival's available moves
+//--based on previous logic get the values of p and q
+//-- get the value of the game by substituting value of or q in any of the expected outcome
+//
+//this code is  created by Rezaul Hoque on February 28,2023
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+///////////////////////////////////////////////
+#include <iostream>
+void insert(int [][2],int);
+double ProbA(int [][2]);
+double ProbB(int [][2]);
+double value (int [][2],double);
+void insert(int a[][2],int n){
+for(int i=0;i<n;i++){
+  for(int j=0;j<n;j++){
+std::cin>>a[i][j];}
+}
+}
+double ProbA(int a[][2]){
+double p;
+int i=0;
+int j=0;
+p=(double)(a[i+1][j+1]-a[i+1][j])/((a[i][j]+a[i+1][j+1]-a[i+1][j]-a[i][j+1]));
+
+return p;
+}
+
+double ProbB(int a[][2]){
+double q;
+int i=0;
+int j=0;
+q=(double)(a[i+1][j+1]-a[i][j+1])/(a[i][j]+a[i+1][j+1]-a[i+1][j]-a[i][j+1]);
+
+return q;
+}
+
+double value (int a[][2],double p){
+double v;
+int i=0;
+int j=0;
+v=(double)p*a[i][j]+(1-p)*a[i+1][j];
+return v;
+}
+int main()
+{
+int n=2;
+int a[2][2];
+insert(a,2);
+
+for(int i=0;i<n;i++){
+ std::cout<<"\n";
+  for(int j=0;j<n;j++)
+std::cout<<a[i][j]<<" ";
+}
+double p=ProbA(a);
+double q=ProbB(a);
+std::cout<<"\n     strategy1(prob)  strategy 2(prob)\n";
+std::cout<<"\nPlayer1:    "<<p<<"       "<<1-p<<" \n";
+std::cout<<"\nPlayer2:    "<<q<<"       "<<1-q<<" \n";
+
+std::cout<<"Value of the game:\n"<<value(a,p)<<"\n";
+
+return 0;
+}
