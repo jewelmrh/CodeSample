@@ -1,0 +1,78 @@
+
+//////////////////////////////////////////////////////////////////////////////
+//LapCrit: a program to demonstrate Laplace criterion of decision making under uncertainty
+//A company has three production lines for a new product and it is unsure about its acceptance(Good,Fair,Poor) among the consumers; It assigns equal probability to product acceptance and decides on the production line that generates maximum profit based on first year's profit;
+//Pseuodocode Development:
+//First Refinement:
+//--create a class that has attributes that represent the three different production lines
+//--create and initialize an array of the class with anticipated profits for  different production lines in each state
+//--create an array to hold sum of the product between expected profits and probability of different states for each production line
+//--print the expected profits for different production lines
+//--get the maximum profit from this array
+//--print the maximum profit
+//Second Refinement:
+//--Class Lap
+     public: a,b,c
+//--n=number of states (product acceptance)
+//--Lap l[n]={/*elements*/}
+//--double t[n]={/*null elements*/};
+//--int j=0
+//--for i to n-1:
+//      t[j] += 1/n*l[i].a
+//      t[j+1] += 1/n*l[i].b
+//      t[j+2] += 1/n*l[i].c
+//--for i to n-1:
+//    print t[i]
+//--double max=t[0]
+//--for i to n-1:
+//     if(max<t[i])
+//              max=t[i]
+//--print max
+/////////
+//this code is  created by Rezaul Hoque on March 03,2023
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+//////////////////////////////////////////////////////////////////////
+#include <iostream>
+class Lap{
+public:
+int a,b,c;
+Lap(){}
+Lap(int g,int f,int p){a=g;b=f;c=p;}
+~Lap(){}
+};
+
+
+int main()
+{
+int n=3;
+Lap l[3]={Lap(80,70,50),Lap(50,45,40),Lap(-25,-10,0)};
+
+double t[3]={0,0,0};
+int j=0;
+for(int i=0;i<3;i++){
+t[j]+=((double) 1/n* l[i].a);
+
+t[j+1]+= ((double)1/n*l[i].b);
+
+ t[j+2]+=((double)1/n*l[i].c);
+}
+ 
+for(int i=0;i<3;i++)
+    std::cout <<t[i]<<" ";
+std::cout<<" \n";
+double max=t[0];
+
+for(int i=0;i<3;i++){
+    if(max<t[i])
+       max=t[i];
+      
+}
+
+
+
+std::cout<<max<<" ";
+
+
+return 0;
+}
