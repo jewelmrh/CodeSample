@@ -1,0 +1,32 @@
+
+########################################
+#pyLapCrit: Python equivalent of C++ program LapCrit
+#this code is  created by Rezaul Hoque on March 04,2023;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+#################################
+class Lap:
+     def __init__(self,a,b,c):
+            self.a=a
+            self.b=b
+            self.c=c
+
+n=3
+l=[Lap(80,70,50),Lap(50,45,40),Lap(-25,-10,0)]
+
+t=[0,0,0]
+j=0
+for i in range(0,len(l)):
+   t[j]+=(1/n*l[i].a)
+   t[j+1]+= (1/n*l[i].b)
+   t[j+2]+=(1/n*l[i].c)
+
+for i in t:
+   print(i,end=" ")
+
+print (" \n")
+max=t[0]
+for i in range(1,n):
+   if(max<t[i]):
+                  max=t[i]
+print(max,end=" ")
