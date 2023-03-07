@@ -1,0 +1,53 @@
+//g++  7.4.0
+
+///////////////////////////////////////////////////////////////////////////////
+//SavBalance:C++ equivalent of java program javSavBalance 
+//this code is  created by Rezaul Hoque on March 07,2023
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+////////////////////////////////////////////////////////////
+#include <iostream>
+class noNeg{};
+class SavAcc{
+private:
+double bal;
+static double ir;
+public:
+SavAcc(){}
+SavAcc(double b,double r){if(b<0||r<0){
+try{
+throw noNeg();
+}
+catch(noNeg e){
+std::cout<<"Number can't be negative. \n";
+}
+}
+else{
+bal=b;ir=r;}
+}
+double getS(){return bal;}
+double getR(){return ir;}
+double Month(){return (double) (bal+bal*ir/12);}
+static void ModR(double r){ir=r;}
+};
+double SavAcc::ir=0.0;
+
+int main()
+{
+SavAcc s[2]={SavAcc(2000,0.04),SavAcc(3000,0.04)};
+    std::cout << "Balance  Monthly Balance\n";
+for(auto x:s){
+
+If(x.getS() >=0 && x.getR()>=0)
+    std::cout<<x.getS()<<"    "<<x.Month()<<" \n";
+}
+s[0].ModR(0.05);
+
+    std::cout << "Interest:5%\nBalance  Monthly Balance\n";
+for(auto x:s){
+
+If(x.getS() >=0 && x.getR()>=0)
+    std::cout<<x.getS()<<"    "<<x.Month()<<" \n";
+}
+return 0;
+}
