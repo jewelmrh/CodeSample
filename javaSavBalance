@@ -1,0 +1,68 @@
+
+////////////////////////////////////////////////////////////////////////////////javaSavBalance: java class object and exception handling example
+//this code is  created by Rezaul Hoque on March 07,2023;
+//contact:jewelmrh@yahoo.com; rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+//////////////////////////////////////////////////////////////////////////////
+import java.util.*;
+import java.lang.*;
+@SuppressWarnings("serial")
+class noNeg extends Exception { }
+class SavAcc{
+private double sav;
+private static double ir;
+
+
+public SavAcc(){
+}
+public SavAcc(double b,double r)
+{
+  if(r<0||b<0){
+     try {
+         throw new noNeg();
+          }
+  
+    catch(noNeg z){
+            System.out.println("Number can't be negative. \n");
+             }
+}
+else{
+
+this.sav=b;
+ir=r;
+}
+}
+
+public double getS(){return sav;}
+public static double getR(){return ir;}
+public double MonthBal(){ return (sav+sav*ir/12);}
+public static void ModIr(double r){
+ir=r;
+}
+}
+
+
+class Rextester
+{  
+    public static void main(String args[])
+    {
+
+        SavAcc s1,s2;
+                    s1=   new SavAcc(2000,0.04);
+                     s2=  new SavAcc(3000,0.04);
+                     
+                        
+SavAcc[] saves={s1,s2};
+  System.out.println("Balance\tMonthlyBalance\n");
+for(SavAcc ex: saves){
+System.out.printf("%.2f\t%.2f\n",ex.getS(),ex.MonthBal());
+}
+SavAcc.ModIr(0.05);
+
+  System.out.println("Interest rate:5%\nBalance\tMonthlyBalance\n");
+for(SavAcc ex: saves){
+System.out.printf("%.2f\t%.2f\n",ex.getS(),ex.MonthBal());
+}
+
+    }
+}
