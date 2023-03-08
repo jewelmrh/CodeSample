@@ -1,0 +1,33 @@
+
+#####################################
+#pySavBalance: Python equivalent of java program javSavBalance
+#this code is  created by Rezaul Hoque on March 08,2023
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note:codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+#####################
+class SavAcc:
+   def __init__(self,bal,ir):
+     try:
+        self.bal=bal
+        self.ir=ir
+        assert bal>0 and ir>0
+     except:
+        print("Number can't be negative. \n")
+   def Month(self):
+        return (self.bal +self.bal*self.ir/12)
+   def Modir(self,r):
+        self.ir=r
+
+a=[SavAcc(2000,0.04),SavAcc(3000,0.04)]
+print("Balance Monthly Balance:\n")
+for i in a:
+  if(i.bal>0 and i.ir>0):
+    print(f"{i.bal}   {i.Month()}")
+
+print("Interest:5%\nBalance Monthly Balance:\n")
+for i in a:
+  i.Modir(0.05)
+  if(i.bal>0 and i.ir>0):
+    print(f"{i.bal}   {i.Month()}")
+
+
