@@ -1,0 +1,83 @@
+
+////////////////////////////////////////////////////////////////////////////////javaDate: java constructor overloading example
+//this code is  created by Rezaul Hoque on March 09,2023;
+//contact:jewelmrh@yahoo.com; rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+////////////////////////////////
+import java.util.*;
+import java.lang.*;
+class Date{
+private int d;
+private int m;
+private int y;
+private String month;
+public Date(){}
+public Date(int mo,int dd,int yy){
+this.m=mo;
+this.d=dd;
+this.y=yy;
+}
+
+public Date(String mo,int dd,int yy){
+this.month=mo;
+this.d=dd;
+this.y=yy;
+}
+
+public Date(int dd,int yy){d=dd;y=yy;}
+public int getD(){return d;}
+public String getM(){return month;}
+public int getMo(){return m;}
+public int getY(){return y;}
+public void display3(){ System.out.println(getD()+"//"+getY()+"\n");
+}
+public void display4(){ System.out.println(getMo()+"/"+getD()+"/"+getY()+"\n");
+}
+public void display2(){
+System.out.println(getM()+" "+getD()+","+getY()+"\n");
+}
+public int dispM(){
+   String s[]={"January","February","March","April","May","June","July","August","September","October","November","December"};
+if(getM().equals(s[0]))
+   return 1;
+ else if(getM().equals(s[1]))
+   return 2;
+ else if(getM().equals(s[2]))
+   return 3;
+ else if(getM().equals(s[3]))
+   return 4;
+ else if(getM().equals(s[4]))
+   return 5;
+ else if(getM().equals(s[5]))
+   return 6;
+ else if(getM().equals(s[6]))
+   return 7;
+ else if(getM().equals(s[7]))
+   return 8;
+ else if(getM().equals(s[8]))
+   return 9;
+ else if(getM().equals(s[9]))
+   return 10;
+ else if(getM().equals(s[10]))
+   return 11;
+ else if(getM().equals(s[11]))
+   return 12;
+ else 
+   return 0;
+}
+public void display(){
+System.out.println(dispM()+"/"+getD()+"/"+getY()+" \n");
+}
+}
+class Rextester
+{  
+    public static void main(String args[])
+    {
+
+    Date a=new Date(3,8,2023);
+    Date b=new Date("March",8,2023);
+     a.display4();
+     b.display();
+     b.display2();
+    }
+}
