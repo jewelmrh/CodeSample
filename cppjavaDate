@@ -1,0 +1,83 @@
+//g++  7.4.0
+
+////////////////////////////////////////////////////////////////////////////////cppjavaDate: C++ equivalent of the program javaDate
+//this code is  created by Rezaul Hoque on March 10,2023;
+//contact:jewelmrh@yahoo.com; rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////
+#include <iostream>
+#include <string>
+class Date{
+private :
+int d;
+int m;
+ int y;
+std::string month;
+public:
+ Date(){}
+Date(int mo,int dd,int yy){
+this->m=mo;
+this->d=dd;
+this->y=yy;
+}
+Date(std::string mo,int dd,int yy){
+month=mo;
+d=dd;
+y=yy;
+}
+Date(int dd,int yy){d=dd;y=yy;}
+ int getD(){return d;}
+std::string getM(){return month;}
+ int getMo(){return m;}
+int getY(){return y;}
+void display3(){ std::cout<<getD()<<"//"<<getY()<<"\n";
+}
+void display4(){ std::cout<<getMo()<<"/"<<getD()<<"/"<<getY()<<"\n";
+}
+void display2(){
+std::cout<<getM()<<" "<<getD()<<","<<getY()<<"\n";
+}
+int dispM(){
+   std::string s[12]={"January","February","March","April","May","June","July","August","September","October","November","December"};
+if(getM()==s[0])
+   return 1;
+ else if(getM()==s[1])
+   return 2;
+ else if(getM()==s[2])
+   return 3;
+ else if(getM()==s[3])
+   return 4;
+ else if(getM()==s[4])
+   return 5;
+ else if(getM()==s[5])
+   return 6;
+ else if(getM()==s[6])
+   return 7;
+ else if(getM()==s[7])
+   return 8;
+ else if(getM()==s[8])
+   return 9;
+ else if(getM()==s[9])
+   return 10;
+ else if(getM()==s[10])
+   return 11;
+ else if(getM()==s[11])
+   return 12;
+ else 
+   return 0;
+}
+void display(){
+std::cout<<dispM()<<"/"<<getD()<<"/"<<getY()<<" \n";
+}
+};
+int main()
+{  
+    Date a(3,8,2023);
+    Date b("March",8,2023);
+     a.display4();
+     b.display();
+     b.display2();
+    return 0;
+}
+
+
