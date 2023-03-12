@@ -1,0 +1,54 @@
+
+#####################################
+#pyjavaDate: Python equivalent of java program javaDate
+#this code is  created by Rezaul Hoque on March 12,2023
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note:codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+#####################
+class Dt:
+   def __init__(self,mo,d,y):
+         self.mo=mo
+         self.d=d
+         self.y=y
+   def stint(self):
+      if isinstance(self.mo,str):
+             if self.mo=="January":
+               return 1
+             elif self.mo=="February":
+               return 2
+             elif self.mo=="March":
+               return 3
+             elif self.mo=="April":
+               return 4
+             elif self.mo=="May":
+               return 5
+             elif self.mo=="June":
+               return 6
+             elif self.mo=="July":
+               return 7
+             elif self.mo=="August":
+               return 8
+             elif self.mo=="September":
+               return 9
+             elif self.mo=="October":
+               return 10
+             elif self.mo=="November":
+               return 11
+             elif self.mo=="November":
+               return 12
+             else:
+               print("Not defined\n")
+   def mdy(self):
+      print(f"{self.mo}/{self.d}/{self.y}")
+   def dy(self):
+      print(f"{self.d}/{self.y}")
+   def stintdy(self):
+      print(f"{self.stint()}/{self.d}/{self.y}")
+   def stmdy(self):
+      print(f"{self.mo} {self.d},{self.y}")
+
+a=Dt(3,12,2023)
+b=Dt("March",12,2023)
+a.mdy()
+b.stintdy()
+b.stmdy()
