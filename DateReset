@@ -1,0 +1,55 @@
+
+//////////////////////////////////////////////////////////////////////////////
+//DateReset: implement a Date class with three data members:year,month and day;include a default constructor,copy constructor,access function,a reset(int y,int m,intd) function to reset date,an advance(int y,int m,int d) to advance the date;employ an utility function normalize () so that members are in correct range and another utility function daysIn(int m) that returns number of days in a month;
+//this code is  created by Rezaul Hoque on March 15,2023
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+////////////////////////////////////////////////////
+#include <iostream>
+class Date{
+public:
+Date(int yr=0,int mo=0,int day=0) {y=yr;m=mo;d=day; 
+normalize();}
+int year(){return y;}
+int month(){return m;}
+int day(){return d;}
+void reset(int yr=0,int mo=0,int day=0){
+y=yr; m=mo;d=day;}
+int daysIn(int mo){
+
+if(mo==1||mo==3||mo==5||mo==7||mo==8||mo==10||mo==12){
+return 31;}
+else if(mo==2){
+return 28;}
+else 
+return 30;
+}
+void advance(int yr,int mo,int day){
+y +=yr;
+m +=mo;
+d +=day;
+normalize ();
+}
+void display (){std::cout<<day()<<"/"<<month()<<"/"<<year()<<"\n";
+}
+private:
+int y,m,d;
+void normalize(){
+m +=d/daysIn(m);
+y +=m/12;
+
+m=m%12;
+d=d%daysIn(m);
+}
+};
+int main()
+{
+Date a(2023,3,30);
+a.advance();//trouble: Last day like 30 or 31 is advanced by 2 days
+a.display();
+a.reset(2023,3,20);
+a.display();
+return 0;
+}
+
+    
