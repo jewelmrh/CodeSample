@@ -1,0 +1,51 @@
+
+#############################################################################################################
+#pyDateReset: Python equivalent of C++ program DateReset
+#this code is  created by Rezaul Hoque on March 17,2023
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note:codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+##################################################################################################################################
+
+class Date:
+  def __init__(self,y,m,d):
+      self.y=y
+      self.m=m
+      self.d=d
+      self.normalize()
+
+  def reset(self,y,m,d):
+      self.y=y
+      self.m=m
+      self.d=d
+
+  def daysIn(self,m):
+     if self.m==1 or self.m==3 or self.m==5 or self.m==7 or self.m==8 or self.m==10 or self.m==12:
+        return 31
+     elif self.m==2:
+        return 28;
+     else:
+        return 30
+  def advance (self,a,b,c):
+      self.y += a
+      self.m += b
+      self.d += c
+      self.normalize ()
+
+  def normalize(self):
+      self.m +=self.d/self.daysIn(self.m)
+      self.y +=self.m/12
+      self.m=self.m%12
+      self.d=self.d%self.daysIn(self.m)
+
+  def display(self):
+       print(f"{self.d}/{int(self.m)}/{int(self.y)}")
+
+a=Date(2023,3,17)
+a.display()
+a.reset(2023,3,30)
+a.display()
+a.advance(0,0,1)#trouble:last day of the month like 30 or 31 is advanced by 2 days
+a.display ()
+
+
+
