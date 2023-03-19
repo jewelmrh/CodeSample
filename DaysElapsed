@@ -1,0 +1,62 @@
+
+/////////////////////////////////////////////////////////////////
+//DaysElapsed:create a date class which has only one member day and function daysElapsedSince(int year,int month,int day) that returns number of days elapsed since Jan1,1AD and another function advance(int d) to advance the existing date by d days
+//this code is  created by Rezaul Hoque on March 19,2023
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////
+#include <iostream>
+class Date{
+
+public:
+Date(){}
+Date(int day) {d=day;}
+
+
+int daysElapsedSince(int year,int mo,int day){
+int leap=int(year/4);
+int rest=year-leap;
+int monthday=0;
+int k=1;
+while (k!=mo){
+monthday += daysIn(k,year);
+k++;
+}
+
+
+d=rest*365+leap*366+monthday+day-1;
+return d;
+
+}
+int daysIn(int mo,int year){
+if(mo==1||mo==3||mo==5||mo==7||mo==8||mo==10||mo==12){
+return 31;}
+else if(mo==2){
+if(year%4==0)
+return 29;
+else
+return 28;}
+else 
+return 30;
+}
+void advance(int day){
+
+d +=day;
+
+}
+void display (){std::cout<<d<<"\n";
+}
+private:
+int d;
+
+};
+
+int main()
+{
+Date a;
+a.daysElapsedSince(2023,3,19);
+a.advance(1);
+a.display();
+
+return 0;
+}
