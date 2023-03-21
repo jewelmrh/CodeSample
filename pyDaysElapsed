@@ -1,0 +1,48 @@
+
+#####################################
+#pyDaysElapsed:Python equivalent of C++ program DaysElapsed
+#this code is  created by Rezaul Hoque on March 21,2023
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note:codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+######################################
+class Date:
+  def __init__(self,d):
+     self.d=d
+
+  def daysIn(self,m,y):
+     if m==1 or m==3 or m==5 or m==7 or m==8 or m==10 or m==12:
+        return 31
+     elif m==2:
+        if y%4:
+           return 29
+        return 28
+     else:
+        return 30
+
+  def advance (self,c):
+      self.d += c
+
+  def daysElapsedSince(self,year,mo,day):
+      leap=int(year/4)
+      rest=year-leap
+      monthday=0
+      k=1
+      while k!=mo:
+            monthday +=self.daysIn(k,year)
+            k+=1
+      self.d=rest*365+leap*366+monthday+day-1
+      return self.d
+
+  def display(self):
+      print(self.d)
+
+a=Date(0)
+a.daysElapsedSince(2023,3,21)
+a.display ()
+a.advance(1)
+a.display()
+
+
+
+
+     
