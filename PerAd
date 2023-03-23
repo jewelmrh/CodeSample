@@ -1,0 +1,74 @@
+
+//////////////////////////////////////////////////////////////////////////////
+//PerAd: implement a Person class with three data members:first name,last name and address of the type Address class that stores city,home, street and phone number of the person;Make sure street, home and phone numbers are not negative  and city is not left blank in Address class;
+//this code is  created by Rezaul Hoque on March 23,2023
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+///////////////////////////////////////////////////
+#include <iostream>
+#include <string>
+class noNeg{};
+class noBlank{};
+class Address{
+private:
+std::string city;
+int street,home,phone;
+public:
+int hom(){return home;}
+std::string ct(){ return city;}
+int st(){ return street;}
+int ph(){return phone;}
+Address (){}
+Address(std::string c,int s,int h,int p){if(s<0||h<0||p<0){
+try{
+throw noNeg();
+}
+catch(noNeg e){
+std::cout<<"Number can't be negative.Check home/street/phone number!\n";
+}
+}
+else{
+phone=p;
+street=s;home=h;}
+if(c==" "){
+try{
+throw noBlank();
+}
+catch(noBlank e){
+std::cout<<"Enter name of the city!It can't be left blank! \n";
+}
+}
+else 
+{
+city=c;
+}
+
+}
+};
+class Person{
+private:
+std::string fn,ln;
+Address ad;
+public:
+std::string fnm(){return fn;}
+std::string lnm(){return ln;}
+Address AD(){return ad;}
+Person (std::string f,std::string l,Address a){ fn=f;ln=l;ad=a;}
+void display (){ 
+std::cout<<"Name: "<<fn<<" "<<ln<<"\n";
+if(ad.ct()!=" ")
+std::cout<<"City:"<<ad.ct();
+if(ad.hom()>0)
+std::cout<<",Home: "<<ad.hom();
+if(ad.st()>0)
+std::cout<<",\nStreet:"<<ad.st();
+if( ad.ph()>0)
+std::cout<<",Phone:"<<ad.ph();}
+};
+
+int main()
+{
+  Person s("zzz","sss",Address("Zoville",-12,567,9876));
+s.display ();
+return 0;
+}
