@@ -1,0 +1,56 @@
+
+#####################################
+#pyPerAd:Python equivalent of C++ program PerAd
+#this code is  created by Rezaul Hoque on March 28,2023
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note:codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+######################################
+class noNeg(Exception):
+   def __init__(self,num,message="Number can't be negative.Check home/street/phone number!"):
+      self.num=num
+      self.message=message
+      super().__init__(self.message)
+
+class noBlank(Exception):
+   def __init__(self,s,message="Enter name of the city.It can't be left blank!"):
+      self.s=s
+      self.message=message
+      super().__init__(self.message)
+
+class Address:
+   def __init__(self,city,home,street, phone):
+         self.city=city
+         if self.city == " ":
+            raise noBlank(self.city)
+         self.home=home
+         if self.home<0:
+            raise noNeg(self.home)
+         self.street=street
+         if self.street<0:
+            raise noNeg(self.street)
+         self.phone=phone
+         if self.phone<0:
+            raise noNeg(self.phone)
+
+class Person:
+   def __init__(self,fn,ln,ad):
+         self.fn=fn
+         self.ln=ln
+         self.ad=ad
+
+   def display(self):
+         print(f"{self.fn} {self.ln}")
+         if not self.ad.city==" ":
+           print(f"City:{self.ad.city}")
+         if not self.ad.street<0:  
+           print(f"Street:{self.ad.street}")
+         if not self.ad.home<0:
+           print(f"Home:{self.ad.home}")
+         if not self.ad.phone<0:
+            print(f"Phone:{self.ad.phone}")
+
+a=Person("ZZZ"," ",Address("Zoville",11,222,100))
+a.display()
+
+
+
