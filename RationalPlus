@@ -1,0 +1,69 @@
+
+////////////////////////////////////////////////////////////////////////////
+//RationalPlus: 
+//this code is  created by Rezaul Hoque on April 06,2023
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+//////////////////////////////////////////////////
+#include <iostream>
+class divZero{};
+class Rational {
+private :
+double x,y ;
+public :
+Rational (){}
+Rational (double p,double q){ x=p ;
+if(q==0){
+try{
+throw divZero();
+}
+catch(divZero e){
+std::cout<<"Denominator can't be zero.\n";
+}
+}
+else{
+y=q ;
+}
+}
+Rational (const Rational& c){x=c.x;
+y=c.y;}
+void show(){if(y>0)std ::cout<<x<<"/"<<y<<"\n" ;
+}
+Rational plus(Rational r){
+Rational res;
+res.x=x*r.y +r.x*y;
+res.y=r.y*y;
+return res;
+}
+Rational minus(Rational r){ 
+Rational res;
+res.x=x*r.y - r.x*y;
+res.y=r.y*y;
+return res;
+}
+Rational dividedBy(Rational r){ Rational res;
+res.x=(double)x/y ;
+res.y= (double)r.x/r.y ;
+return res;
+}
+Rational times(Rational r){
+Rational res;
+res.x=x*r.x ;
+res.y=y*r.y;
+return res;
+}
+} ;
+
+int main()
+{
+   Rational a(4,0);
+Rational c(3,4);
+c.show();
+Rational z=a.plus(c);
+z.show();
+Rational t=a.times(c);
+t.show ();
+Rational b=a.dividedBy(c);
+b.show ();
+return 0;
+}
