@@ -1,0 +1,56 @@
+#####################################
+#pyRationalPkus:Python equivalent of C++ program RationalPkus
+#this code is  created by Rezaul Hoque on April 08,2023
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note:codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+######################################
+
+class divZero(Exception):
+   def __init__(self,s,message="Denominator can't be zero!"):
+      self.s=s
+      self.message=message
+      super().__init__(self.message)
+
+class Rational:
+  def __init__(self,x,y):
+         self.x=x
+         self.y=y
+         if self.y==0:
+            raise divZero(self.y)
+        
+  def show (self):
+        if self.y>0:
+            print(f"{self.x}/{self.y}")
+
+  def plus(self,r):
+        self.x=self.x*r.y +r.x*self.y
+        self.y=r.y*self.y
+        
+  def minus(self,r):
+        self.x=self.x*r.y-r.x*self.y
+        self.y=r.y*self.y
+        
+  def dividedBy(self,r):
+        self.x=self.x/self.y 
+        self.y= r.x/r.y 
+
+  def times(self,r):
+        self.x=self.x*r.x
+        self.y= self.y*r.y
+
+a=Rational (4,5)
+c=Rational (3,4)
+a.plus(c)
+a.show ()
+b=Rational(4,5)
+b.minus(c)
+b.show()
+p=Rational (1,2)
+q=Rational (2,1)
+p.times(q)
+p.show ()
+e=Rational(3,4)
+f=Rational(4,5)
+e.dividedBy(f)
+e.show()
+
