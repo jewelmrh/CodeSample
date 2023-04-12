@@ -1,0 +1,124 @@
+
+//////////////////////////////////////////////////////////////////////////
+//PerAdTelVirtu
+//this code is  created by Rezaul Hoque on April 12,2023
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+///////////////////////////////////////////////////
+#include <iostream>
+#include <string>
+class noNeg{};
+class noBlank{};
+
+class Person{
+private:
+std::string fn,ln;
+public:
+std::string fnm(){return fn;}
+std::string lnm(){return ln;}
+Person (std::string f,std::string l){ fn=f;ln=l;}
+virtual void display (){ 
+std::cout<<"Name: "<<fnm()<<" "<<lnm()<<"\n";
+}
+};
+class Address{
+private:
+std::string city;
+int street,home;
+public:
+int hom(){return home;}
+std::string ct(){ return city;}
+int st(){ return street;}
+
+Address (){}
+Address(std::string c,int s,int h){if(s<0||h<0){
+try{
+throw noNeg();
+}
+catch(noNeg e){
+std::cout<<"Number can't be negative.Check home/street!\n";
+}
+}
+else{
+street=s;home=h;}
+if(c==" "){
+try{
+throw noBlank();
+}
+catch(noBlank e){
+std::cout<<"Enter name of the city!It can't be left blank! \n";
+}
+}
+else 
+{
+city=c;
+}
+}
+void display (){
+if(ct()!=" ")
+std::cout<<"City:"<<ct();
+if(hom()>0)
+std::cout<<",Home: "<<hom();
+if(st()>0)
+std::cout<<",\nStreet:"<<st()<<" \n";
+}
+};
+class Telephone {
+private:
+int code;
+int number;
+public:
+Telephone (){}
+Telephone (int a,int b){
+if(a<0 ||b<0)
+{
+try{
+throw noNeg();
+}
+catch(noNeg e){
+std::cout<<"Number can't be negative!\n";
+ }
+}
+else
+{
+code=a;number=b;}
+}
+int cod(){return code;}
+int num(){return number;}
+void display (){
+std::cout<<"\nPhone:("<<cod()<<") "<<num()<<" \n";}
+};
+class Student: public Person,public Address,public Telephone {
+public:
+Student(std::string f,std::string l,std::string c,int s,int h,int cod,int num):Person(f,l),Address (c,s,h),Telephone (cod,num){}
+void display(){std::cout<<"Name:"<<fnm()<<" "<<lnm()<<",\n";
+if(ct()!=" ")
+std::cout<<"City:"<<ct();
+if(hom()>0)
+std::cout<<",Home: "<<hom();
+if(st()>0)
+std::cout<<",\nStreet:"<<st();
+if(cod()>0 && num()>0)
+std::cout<<",\nPhone:("<<cod()<<") "<<num()<<" \n";
+}
+
+};
+class Stranger: public Person, public Telephone {
+public:
+Stranger (std::string s1,std::string s2,int c,int n):Person (s1,s2),Telephone (c,n){}
+void display(){std::cout<<"Name:"<<fnm()<<" "<<lnm()<<",\n";
+
+if(cod()>0 && num()>0){
+std::cout<<"Phone:("<<cod()<<")"<<num()<<" \n";}
+}
+};
+int main()
+{
+  Student s("Zzz","Sss","Zoville",12,567,8802,9876);
+s.display();
+Stranger o("Strange","Strange",880,12356);
+o.Person::display();
+o.Telephone:: display();
+return 0;
+}
+
