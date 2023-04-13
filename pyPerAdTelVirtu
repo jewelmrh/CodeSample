@@ -1,0 +1,95 @@
+
+#####################################
+#pyPerAdTelVirtu:Python equivalent of C++ program PerAdTelVirtu
+#this code is  created by Rezaul Hoque on April 13,2023
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note:codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+######################################
+class noNeg(Exception):
+   def __init__(self,num,message="Number can't be negative.Check home/street/phone number!"):
+      self.num=num
+      self.message=message
+      super().__init__(self.message)
+
+class noBlank(Exception):
+   def __init__(self,s,message="Enter name of the city.It can't be left blank!"):
+      self.s=s
+      self.message=message
+      super().__init__(self.message)
+
+class Person:
+   def __init__(self,fn,ln):
+         self.fn=fn
+         self.ln=ln
+         
+   def display(self):
+         print(f"{self.fn} {self.ln}")
+        
+
+class Address:
+   def __init__(self,city,home,street):
+         self.city=city
+         if self.city == " ":
+            raise noBlank(self.city)
+         self.home=home
+         if self.home<0:
+            raise noNeg(self.home)
+         self.street=street
+         if self.street<0:
+            raise noNeg(self.street)
+
+   def display(self):
+         if not self.city==" ":
+           print(f"City:{self.city}")
+         if not self.street<0:  
+           print(f"Street:{self.street}")
+         if not self.home<0:
+           print(f"Home:{self.home}")
+
+class Telephone:
+   def __init__(self,code,num):
+         self.code=code
+         if self.code<0:
+            raise noNeg(self.code)
+         self.num=num
+         if self.num<0:
+            raise noNeg(self.num)
+
+   def display(self):
+         if not self.code<0:  
+           print(f"Street:{self.code}")
+         if not self.num<0:
+           print(f"Home:{self.num}")
+
+class Student(Person, Address, Telephone):
+   def __init__(self,fn,ln,city,home,street,code,num):
+         Person.__init__(self,fn,ln)
+         Address.__init__(self,city,home,street)
+         Telephone.__init__(self,code,num)
+   def display(self):
+         print(f"{self.fn} {self.ln}")
+         if not self.city==" ":
+           print(f"City:{self.city}")
+         if not self.street<0:  
+           print(f"Street:{self.street}")
+         if not self.home<0:
+           print(f"Home:{self.home}")
+         if not self.code<0 and not self.num<0:
+           print(f"Telephone:({self.code}) {self.num} ")
+
+class Stranger(Person,Telephone):
+   def display(self):
+         print(f"{self.fn} {self.ln}")
+         if not self.code<0 and not self.num<0:
+           print(f"Telephone:({self.code}) {self.num} ")
+         
+   def __init__(self,fn,ln,code,num):
+         Person.__init__(self,fn,ln)
+         Telephone.__init__(self,code,num)
+a=Student("ZZZ","SSS","Zoville",11,222,880,140000)
+s=Stranger (" Strange "," Strange",880,23456)
+a.display()
+s.display ()
+
+
+
