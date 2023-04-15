@@ -1,0 +1,61 @@
+
+//////////////////////////////////////////////////////////////////////////
+//Printer
+//this code is  created by Rezaul Hoque on April 15,2023
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+///////////////////////////////////////////////////
+#include <iostream>
+class Printer{
+public:
+virtual void on()=0;
+virtual void off()=0;
+virtual void print()=0;
+virtual void scan()=0;
+virtual void finish()=0;
+};
+class Normal:public Printer{
+public:
+int count=0;
+Normal(){}
+void on(){std::cout<<"Normal printer is on.\n";}
+void off(){std::cout<<"Normal printer is off.\n";}
+void print(){count++;std::cout<<"Normal printing is in progress.\n";}
+void scan(){count++;std::cout<<"Scanning in normal printer is in progress.\n";}
+void finish (){std::cout<<"Normal printer has completed "<<count;
+if(count>1) std::cout<<" tasks.\n";
+else 
+ std::cout<<" task.\n";
+}
+};
+class Color:public Printer{
+public:
+int count=0;
+Color(){}
+void on(){std::cout<<"Color printer is on.\n";}
+void off(){std::cout<<"Color printer is off.\n";}
+void print(){count++;std::cout<<"Color printing is in progress.\n";}
+void nprint(){count++;std::cout<<"Normal printing using color printer is in progress. \n";}
+void scan(){count++;std::cout<<"Scanning in color printer is in progress.\n";}
+void finish (){std::cout<<"Color printer has completed "<<count;
+if(count>1) std::cout<<" tasks.\n";
+else 
+ std::cout<<" task.\n";
+}
+};
+
+int main()
+{
+Normal n;
+Color c;
+n.on();
+n.print();
+n.finish ();
+n.off();
+c.on();
+c.scan();
+c.print();
+c.finish ();
+c.off ();
+return 0;
+}
