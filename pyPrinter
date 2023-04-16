@@ -1,0 +1,89 @@
+
+#####################################
+#pyPrinter:Python equivalent of C++ program Printer
+#this code is  created by Rezaul Hoque on April 16,2023
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note:codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+#############################
+
+class Printer:
+   def on(self):
+     print("Printer on method!\n")
+
+   def off(self):
+     print("Printer off method!\n")
+
+   def scan(self):
+     print("Printer scan method!\n")
+
+   def print(self):
+     print("Printer print method!\n")
+
+   def finish(self):
+     print("Printer finish method!\n")
+
+
+class Normal(Printer):
+   def __init__(self,count=0):
+     self.count=count
+   def on(self):
+     print("Normal printer is on!\n")
+
+   def off(self):
+     print("Normal printer is off!\n")
+
+   def scan(self):
+     self.count += 1
+     print("Scanning in normal printer is in progress!\n")
+
+   def print(self):
+     self.count += 1
+     print("Normal printing in normal printer is in progress!\n")
+
+   def finish(self):
+     if self.count>1:
+       print(f"Normal printer has completed {self.count} tasks!\n")
+     else:
+       print(f"Normal printer has completed {self.count} task!\n")
+
+class Color(Printer):
+   def __init__(self,count=0):
+     self.count=count
+   def on(self):
+     print("Color printer is on!\n")
+
+   def off(self):
+     print("Color printer is off!\n")
+
+   def scan(self):
+     self.count += 1
+     print("Scanning in color printer is in progress!\n")
+
+   def print(self):
+     self.count += 1
+     print("Color printing in color printer is in progress!\n")
+
+   def nprint(self):
+     self.count += 1
+     print("Normal printing in color printer is in progress!\n")
+
+   def finish(self):
+     if self.count>1:
+       print(f"Color printer has completed {self.count} tasks!\n")
+     else:
+       print(f"Color printer has completed {self.count} task!\n")
+
+
+a=Normal()
+a.on()
+a.scan()
+a.finish()
+a.off()
+
+c=Color()
+c.on()
+c.scan()
+c.print()
+c.finish()
+c.off()
+
