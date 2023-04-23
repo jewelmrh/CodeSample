@@ -1,0 +1,102 @@
+
+////////////////////////////////////////////////////////////////////////////
+//GradStud2
+//this code is  created by Rezaul Hoque on April 23,2013
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <string>
+
+class noNeg{};
+class noBlank{};
+class Date{
+private:
+int day,month,year;
+public:
+Date(){}
+Date(int m,int d,int y){month=m;day=d;year=y;}
+
+int Day(){return day;}
+int Month(){return month;}
+int Year(){return year;}
+};
+class Address{
+private:
+std::string city;
+int street,home,phone;
+public:
+int hom(){return home;}
+std::string ct(){ return city;}
+int st(){ return street;}
+int ph(){return phone;}
+Address(std::string c,int s,int h,int p){if(s<0||h<0||p<0){
+try{
+throw noNeg();
+}
+catch(noNeg e){
+std::cout<<"Number can't be negative.Check home/street/phone number!\n";
+}
+}
+else{
+phone=p;
+street=s;home=h;}
+if(c==" "){
+try{
+throw noBlank();
+}
+catch(noBlank e){
+std::cout<<"Enter name of the city!It can't be left blank! \n";
+}
+}
+else 
+{
+city=c;
+}
+}
+};
+class University: public Address,public Date {
+private:
+std::string name;
+
+public:
+
+University(std::string n,std::string c,int s,int h,int p,int m,int d,int y):Address(c,s,h,p),Date(m,d,y){name=n;}
+~University (){}
+
+std::string uniName(){return name;}
+};
+class Degree:public University{
+private:
+std::string title;
+Date dat;
+public:
+Degree(std::string t,std::string n,std::string c,int s,int h,int p,int m,int d,int y, Date z):University(n,c,s,h,p,m,d,y){title=t; dat=z;}
+std::string degree (){return title;}
+Date dmy(){return dat;}
+};
+
+class GradStud:public Degree{
+private:
+std::string dept;
+
+public:
+GradStud(std::string de, std::string t,std::string n,std::string c,int s,int h,int p,int m,int d,int y, int a,int b,int z): Degree(t,n,c,s,h,p,m,d,y,Date(a,b,z)){dept=de;}
+std::string Dep(){return dept;}
+void display (){std::cout<<" Department: "<<Dep()<<",";
+std::cout<<" Degree: "<<degree()<<", \n";
+std::cout<<"University: "<<uniName()<<",\n";
+std::cout<<"Address:\n "<<Degree::University::ct()<<", "<<hom()<<",\n";
+std::cout<<st()<<","<<ph()<<"\n";
+std::cout<<"Established : "<<Month()<<"/"<<Day()<<"/"<<Year()<<" \n";
+std::cout<<"Degree Awarded: "<<dmy().Month ()<<"/"<<dmy().Day()<<"/"<<dmy().Year()<<" \n";
+}
+};
+
+
+int main()
+{
+   GradStud g("Sorcery","Master of Sorcery ","Hogwarts School of Witchcraft and Wizardry ","Highlands", 99,00,98765,1,1,990,1,1,991);
+g.display ();
+return 0;
+}
