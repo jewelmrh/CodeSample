@@ -1,0 +1,66 @@
+
+###################################
+#pyGradStud2:Python equivalent of C++ program GradStud2
+#this code is  created by Rezaul Hoque on April 24,2023
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note:codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+######################################
+class noNeg(Exception):
+   def __init__(self,num,message="Number can't be negative.Check home/street/phone number!"):
+      self.num=num
+      self.message=message
+      super().__init__(self.message)
+
+class noBlank(Exception):
+   def __init__(self,s,message="Enter name of the city.It can't be left blank!"):
+      self.s=s
+      self.message=message
+      super().__init__(self.message)
+
+class Address:
+   def __init__(self,city,home,street, phone):
+         self.city=city
+         if self.city == " ":
+            raise noBlank(self.city)
+         self.home=home
+         if self.home<0:
+            raise noNeg(self.home)
+         self.street=street
+         if self.street<0:
+            raise noNeg(self.street)
+         self.phone=phone
+         if self.phone<0:
+            raise noNeg(self.phone)
+
+class Date:
+   def __init__(self,month,day,year):
+         self.month=month
+         self.day=day
+         self. year=year
+
+class University(Address,Date):
+   def __init__(self,name,city,home,street,phone,month,day,year):
+         self. name=name
+         Address.__init__(self, city,home,street, phone)
+         Date.__init__(self,month,day,year)
+
+class Degree(University):
+   def __init__(self,title,name,city,home,street,phone,month,day,year,dte):
+         self.title=title
+         self.dte=dte
+         University.__init__(self, name,city,home,street, phone,month, day,year)
+        
+
+class GradStud(Degree):
+   def __init__(self,dep,title,name,city,home,street,phone,month,day,year,dte):
+         self.dep=dep
+         Degree.__init__(self,title,name,city,home,street,phone,month,day,year,dte)
+   def display (self):
+         print(f"Department :{self.dep}")
+         print(f"Degree: {self.title}")
+         print(f"University:{self.name},\n" f"Address:\n" f"{self.city},{self.home},\n" f"{self.street}, {self.phone},\n" f"Established:{self.month}/{self.day}/{self.year}\n" f"Date Awarded:{self.dte.month}/{self.dte.day}/{self.dte.year}")
+
+g=GradStud("Dept of Sorcery","Master of Sorcery","Hogwarts School of Witchcraft and Wizardry","Highlands ",99,00,98765,1,1,990,Date(1,1,991))
+g.display ()
+   
+
