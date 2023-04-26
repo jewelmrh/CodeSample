@@ -1,0 +1,81 @@
+
+#####################################
+#pyPerStudStaff:Python equivalent of C++ program PerStudStaff
+#this code is created by Rezaul Hoque on April 26,2023
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note:codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+#############################
+class noBlank(Exception):
+   def __init__(self,s,message="Name can't be left blank!"):
+      self.s=s
+      self.message=message
+      super().__init__(self.message)
+
+class Person:
+   def __init__(self,fn,ln):
+         self.fn=fn
+         if self.fn == " ":
+            raise noBlank(self.fn)
+         self.ln=ln
+         if self.ln== " ":
+            raise noBlank(self.ln)
+         
+   def display(self):
+        if not self.fn==" " and not self.ln==" ":
+         print(f"{self.fn} {self.ln}")
+
+class Student(Person):
+   def __init__(self,f,l,dep,uni):
+         self.dep=dep
+         self.uni=uni
+         Person.__init__(self,f,l)
+
+   def display(self):
+         print(f"Student:\n" f"Name:{self.fn} {self.ln}\n" f"Dept: {self.dep}\n" f"University: {self.uni}\n")
+
+class Faculty(Person):
+   def __init__(self,f,l,dep,uni,join):
+         self.dep=dep
+         self.uni=uni
+         self. join=join
+         Person.__init__(self,f,l)
+
+   def display(self):
+         print(f"Faculty:\n"f"Name:{self.fn} {self.ln}\n" f"Dept: {self.dep}\n" f"University: {self.uni}\n" f"Joined: {self.join}\n")
+
+class Staff(Person):
+   def __init__(self,f,l,id):
+         self.id=id
+         Person.__init__(self,f,l)
+
+   def display(self):
+         print(f"Staff:\n" f"Name:{self.fn} {self.ln}\n" f"ID: {self.id}\n")
+
+class GradStud(Student):
+   def __init__(self,f,l,dep,uni,deg,awd):
+         self.deg=deg
+         self.awd=awd
+         Student.__init__(self,f,l,dep,uni)
+
+   def display(self):
+
+        if not self.fn==" " and not self.ln==" ":
+         print(f"Grad Student:")
+         print(f"Name:{self.fn} {self.ln}")
+         print(f"Dept: {self.dep}\n" f"University: {self.uni}")
+         print(f"Degree: {self.deg}\n" f"Awarded:{self.awd}\n")
+
+class Maintenance (Staff):
+   def __init__(self,f,l,id,sal,join):
+         self.sal=sal
+         self.join=join
+         Staff.__init__(self,f,l,id)
+
+   def display(self):
+         print(f"Maintenance:\n"f"Name:{self.fn} {self.ln}\n" f"ID: {self.id}\n" f"Joined: {self.join}\n")
+
+
+g=GradStud("Abra","Debra","Dept of Sorcery","Hogwarts School of Witchcraft and Wizardry","Master of Sorcery",991)
+g.display ()
+
+
