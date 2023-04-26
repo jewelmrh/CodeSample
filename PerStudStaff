@@ -1,0 +1,108 @@
+
+//////////////////////////////////////////////////////////////////////////////
+//PerStudStaff
+//this code is  created by Rezaul Hoque on April 26,2023
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+////////////////////////////
+#include <iostream>
+#include <string>
+class noBlank{};
+class Person{
+private:
+std::string fn,ln;
+
+public:
+std::string fnm(){return fn;}
+std::string lnm(){return ln;}
+Person (){}
+
+Person (std::string f,std::string l){if(f==" "||l==" "){
+try{
+throw noBlank();
+}
+catch(noBlank e){
+std::cout<<"Name can't be left blank! \n";
+}
+}
+else 
+{
+ fn=f;ln=l;
+}
+}
+void display (){ 
+std::cout<<"Name: "<<fn<<" "<<ln<<"\n";
+}
+};
+class Student:public Person{
+private:
+std::string dep,uni;
+public:
+std::string Dept(){return dep;}
+std::string Univ(){return uni;}
+Student(){}
+Student (std::string s1, std::string s2,std::string c,std::string d): Person(s1,s2){dep=c;uni=d;}
+
+};
+class Faculty: public Person {
+private:
+std::string dep,uni;
+int join;
+public:
+std::string Dept(){return dep;}
+std::string Univ(){return uni;}
+int joinYr(){return join;}
+Faculty(){}
+Faculty(std::string s1, std::string s2,std::string c,std::string d, int y): Person(s1,s2){dep=c;uni=d; join=y;}
+
+void display (){ 
+std::cout<<"Faculty: \nName: "<<fnm()<<" "<<lnm()<<"\n";
+std::cout<<" Dept: "<<dep<<"\n"<<" University: "<<uni<<" \n";
+}
+
+};
+class Staff:public Person{
+private:
+int id;
+public:
+int ID(){return id;}
+Staff(){}
+Staff(std::string s1, std::string s2,int i): Person(s1,s2){id=i;}
+};
+
+class GradStud:public Student{
+private:
+std::string degree;
+int awyr;
+public:
+std::string Deg(){return degree;}
+int awYr(){return awyr;}
+GradStud(){}
+GradStud(std::string s1,std::string s2,std::string dep,std::string uni,std::string d, int y): Student(s1,s2,dep,uni){degree=d; awyr=y;}
+void display (){ 
+std::cout<<"Student:\nName: "<<fnm()<<" "<<lnm()<<"\n";
+std::cout<<"Dept: "<<Dept()<<"\n"<<"University: "<<Univ()<<" \n";
+std::cout<<"Degree: "<<degree<<" \n";
+std::cout<<"Awarded: "<<awyr<<" \n";
+}
+};
+class Maintenance:public Staff{
+private:
+int sal,jn;
+public:
+int Sal(){return sal;}
+int Jn(){return jn;}
+Maintenance (){}
+Maintenance(std::string s1, std::string s2,int s3,int s,int j):Staff(s1,s2,s3){sal=s;jn=j;}
+
+void display (){ 
+std::cout<<"Maintenance Staff: \nName: "<<fnm()<<" "<<lnm()<<"\n";
+std::cout<<"ID: "<<ID()<<"\n";
+std::cout<<"Joined: "<<Jn()<<"\n";
+}
+};
+int main(){
+GradStud s("Abra","Debra","Department of Sorcery","Hogwarts School of Sorcery and Wizardry ","Master of Sorcery",991);
+s.display();
+return 0;
+}
