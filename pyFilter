@@ -1,0 +1,33 @@
+
+######################################
+#pyFilter:Python equivalent of Filter program
+#this code is  created by Rezaul Hoque on May 30,2023;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+######################################
+class Filter:
+  def  ascend(self,s):
+        for i in range(1,5):
+           for j in range (0,5-i):
+             if (s[j]>s[j+1]):
+                temp=s[j]
+                s[j]=s[j+1]
+                s[j+1]=temp
+        for k in range(0,5):
+            print(s[k])
+
+
+  def  descend(self,s):
+        for i in range(1,5):
+           for j in range (0,5-i):
+             if (s[j]<s[j+1]):
+                temp=s[j]
+                s[j]=s[j+1]
+                s[j+1]=temp
+        for k in range(0,5):
+            print(s[k])
+
+a=[54,3,7,8,9]
+f=Filter()
+f.ascend(a)
+f.descend(a)
