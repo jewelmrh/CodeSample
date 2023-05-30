@@ -1,0 +1,49 @@
+///////////////////////////////////////////////////////////////////////
+//Filter: Filter an array of integers in increasing or decreasing order
+//this code is  created by Rezaul Hoque on May 30,2023;
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+class Filter{
+private:
+int* a;
+public:
+Filter (){}
+
+void ascend(int *a){
+for(int j=1;j<5;j++)
+for(int k=0;k<5-j;k++){
+if(a[k]>a[k+1]){
+int temp=a[k];
+a[k]=a[k+1];
+a[k+1]=temp;
+}
+}
+for(int k=0;k<5;k++)
+std::cout<<a[k]<<" ";
+std::cout<<" \n";
+}
+void descend(int * a){
+for(int j=1;j<5;j++)
+for(int k=0;k<5-j;k++){
+if(a[k]<a[k+1]){
+int temp=a[k];
+a[k]=a[k+1];
+a[k+1]=temp;
+}
+}
+for(int k=0;k<5;k++)
+std::cout<<a[k]<<" ";
+std::cout<<" \n";
+}
+};
+
+int main()
+{
+Filter f;
+int a[5]={19,54,4,3,2};
+  f.ascend(a);
+  f.descend(a);
+return 0;
+}
