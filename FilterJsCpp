@@ -1,0 +1,108 @@
+
+//////////////////////////////////////////////////////////////////////////////
+//FilterJsCpp:Filter a C++ array to get elements in increasing or decreasing order,to get the max or min element,to get elements in reverse order,to get lowercase/uppercase of the elements; it emulates JavaScript array filter method;
+//this code is  created by Rezaul Hoque on June 02,2023;
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+/////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+template <class T>
+class Filter{
+private:
+T* a;
+public:
+Filter (){}
+void ascend(T *a,int sz){
+
+std::cout<<sz<<"\n";
+for(int j=1;j<sz;j++)
+for(int k=0;k<sz-j;k++)
+if(a[k]>a[k+1]){
+int temp=a[k];
+a[k]=a[k+1];
+a[k+1]=temp;
+}
+for(int k=0;k<sz;k++)
+std::cout<<a[k]<<" ";
+std::cout<<" \n";
+}
+void descend(T * a,int sz){
+
+for(int j=1;j<sz;j++)
+for(int k=0;k<sz-j;k++){
+if(a[k]<a[k+1]){
+int temp=a[k];
+a[k]=a[k+1];
+a[k+1]=temp;
+}
+}
+for(int k=0;k<sz;k++)
+std::cout<<a[k]<<" ";
+std::cout<<" \n";
+}
+void max(T* a,int sz){
+
+T m=a[0];
+for(int k=1;k<sz;k++){
+if(m<a[k])
+m=a[k];
+}
+std::cout<<m<<"\n";
+}
+
+void min(T* a,int sz){
+
+T m=a[0];
+for(int k=1;k<sz;k++){
+if(m>a[k])
+m=a[k];
+}
+std::cout<<m<<"\n";
+}
+void reverse(T* a,int sz){
+for(int k=sz-1;k>=0;k--){
+std::cout<<a[k]<<" ";
+}
+std::cout<<" \n";
+}
+void lower(T* a,int sz){
+char s;
+for(int k=0;k<sz;k++){
+s=tolower(a[k]);
+std::cout<<s;
+}
+
+std::cout<<"\n";
+}
+
+
+void upper(T* a,int sz){
+char s;
+for(int k=0;k<sz;k++){
+s=toupper(a[k]);
+std::cout<<s;
+}
+std::cout<<"\n";
+}
+};
+
+int main()
+{
+Filter<int> f;
+Filter<char> ch;
+int a[]={19,54,4,3,2};
+int sz=sizeof(a)/sizeof(a[0]);
+char c[]="Hello";
+int n=sizeof(c)/sizeof(c[0]);
+  f.ascend(a,sz);
+  f.descend(a,sz);
+ch.ascend(c,n);
+ch.descend(c,n);
+f.max(a,sz);
+f.min(a,sz);
+f.ascend(a,sz);
+f.reverse(a,sz);
+ch.lower(c,n);
+ch.upper(c,n);
+return 0;
+}
