@@ -1,0 +1,89 @@
+
+#####################################
+#pyFilterJsCpp:Python equivalent of FilterJsCpp program
+#this code is  created by Rezaul Hoque on June 04,2023;
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+######################################
+class Filter:
+   def  ascend(self,s,sz):
+        for i in range(1,sz):
+           for j in range (0,sz-i):
+             if (s[j]>s[j+1]):
+                temp=s[j]
+                s[j]=s[j+1]
+                s[j+1]=temp
+        for k in range(0,sz):
+            print(s[k],end=" ")
+        print ("\n")
+
+   def  descend(self,s,sz):
+        for i in range(1,sz):
+           for j in range (0,sz-i):
+             if (s[j]<s[j+1]):
+                temp=s[j]
+                s[j]=s[j+1]
+                s[j+1]=temp
+        for k in range(0,sz):
+             print(s[k],end=" ")
+        print(" \n")
+
+   def  max(self,a,sz):
+         m=a[0]
+         for k in range(0,sz):
+           if(m<a[k]):
+               m=a[k]
+         print(m)
+         print ("\n")
+
+   def  min(self,a,sz):
+         m=a[0]
+         for k in range(0,sz):
+           if(m>a[k]):
+               m=a[k]
+         print(m)
+         print ("\n")
+
+   def   reverse(self,a,sz):
+         k=sz-1
+         while k>=0:
+            print(a[k],end=" ")
+            k -=1
+
+   def   toUpper(self,a,sz):
+         s =" "
+         for k in a:
+           s +=k+" "
+         #other methods to get string from a list:
+         #l2s=' '.join(map(str,a))
+         #l2s=' '.join([str(item) for item in a])
+         #l2s=reduce(lambda p,q: p+" "+str(q),a)
+     #for k in a:
+      # print(k.upper(),end=" ")
+         #print(l2s.upper())
+         print(" \n"+s.upper())
+    
+
+
+   def   toLower(self,a,sz):
+         l2s=' '.join(map(str,a))
+         print(l2s.lower())
+          
+         
+        
+a=[54,3,7,8,9]
+b=["hi","how","are","you?"]
+c=["Hi","How","Are","You?"]
+f=Filter()
+n=len(a)
+s=len(b)
+l=len(c)
+f.ascend(a,n)
+f.descend(a,n)
+f.max(a,n)
+f.min(a,n)
+f.reverse(a,n)
+f.toUpper(b,s)
+f.toLower(c,l)
+
+
