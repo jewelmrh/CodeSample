@@ -1,0 +1,136 @@
+
+
+//////////////////////////////////////////////////////////////////////////
+//TaxCalcul
+//this code is  created by Rezaul Hoque on June 05,2023
+//contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+///////////////////////////////////////////////////
+#include <iostream>
+namespace Greeting {
+void welcome (){
+std::cout<<"Welcome to tax calculator\nFollow the instructions: \n";
+std::cout<<"~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+std::cout<<"Insert:\n(1)Individual (2)Female/65+ \n(3)Physically Challenged/Transgender (4)Injured Freedom Fighter\n";
+}
+}
+int income (int id,int x){
+int t=0;
+switch (id){
+case 1:
+if(x>=0 && x<=350000){
+  t +=x*0;
+  break;}
+else if(x>=350001 && x<=450000){
+  t +=x*0.05;
+  break;}
+else if(x>=450001 && x<=750000){
+  t +=x*0.10;
+  break;}
+else if(x>=750001 && x<=1150000){
+  t +=x*0.15;
+  break;}
+else if(x>=1150001 && x<=1650000){
+  t +=x*0.20;
+  break;}
+else if(x>1650000){
+  t +=x*0.25;
+  break;}
+else
+  std::cout<<"Sorry not defined! \n";
+
+case 2:
+if(x>=0&& x<=400000){
+  t +=x*0;
+  break;}
+else if(x>=400001 && x<=450000){
+  t +=x*0.05;
+  break;}
+else if(x>=450001 && x<=750000){
+  t +=x*0.10;
+  break;}
+else if(x>=750001 && x<=1150000){
+  t +=x*0.15;
+  break;}
+else if(x>=1150001 && x<=1650000){
+  t +=x*0.20;
+  break;}
+else if(x>1650000){
+  t +=x*0.25;
+  break;}
+else
+  std::cout<<"Sorry not defined! \n";
+case 3:
+if(x>=0&&x<=475000){
+  t +=x*0;
+  break;}
+else if(x>=475001 && x<=750000){
+  t +=x*0.10;
+  break;}
+else if(x>=750001 && x<=1150000){
+  t +=x*0.15;
+  break;}
+else if(x>=1150001 && x<=1650000){
+  t +=x*0.20;
+  break;}
+else if(x>1650000){
+  t +=x*0.25;
+  break;}
+else
+  std::cout<<"Sorry not defined! \n";
+
+case 4:
+
+if(x>=0&&x<=500000){
+  t +=x*0;
+  break;}
+else if(x>=500001 && x<=750000){
+  t +=x*0.10;
+  break;}
+else if(x>=750001 && x<=1150000){
+  t +=x*0.15;
+  break;}
+else if(x>=1150001 && x<=1650000){
+  t +=x*0.20;
+  break;}
+else if(x>1650000){
+  t +=x*0.25;
+  break;}
+else{
+  std::cout<<"Sorry not defined! \n";}
+default:
+  std::cout<<"Sorry not defined! \n";
+}
+return t;
+}
+int wealth(int y){
+int w=0;
+if(y>=0 &&y<=40000000){
+w+=y*0;}
+else if(y>=40000001&&y<=100000000){
+w+=y*0.10;}
+else if(y>=100000001&&y<=200000000){
+w+=y*0.20;}
+else if(y>=200000001&&y<=300000000){
+w+=y*0.30;}
+else{
+w+=y*0.35;}
+return w;
+}
+int main()
+{
+    int id,x,y;
+Greeting::welcome ();
+std::cout<<"Enter id\n";
+std::cin>>id;
+std::cout<<"Enter amount: \n";
+std::cin>>x;
+std::cout<<"Enter wealth: \n";
+std::cin>>y;
+int t=income(id,x);
+int w=wealth(y);
+
+std::cout<<"Income tax(Tk):"<<t<<"\nWealth Tax(Tk)"<<w<<"\nTotal(Tk):"<<t+w;
+return 0;
+ 
+}
