@@ -1,0 +1,103 @@
+#python 3.6.9
+
+#############################################################################################################
+#pyTaxCalcul: Python equivalent of C++ program TaxCalcul
+#this code is  created by Rezaul Hoque on June 07,2023
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note:codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+#############################
+def welcome():
+    print("Welcome to tax calculator\nFollow the instructions: \n")
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+    print ("Insert:\n(1)Individual (2)Female/65+ \n(3)Physically Challenged/Transgender (4)Injured Freedom Fighter\n")
+
+def income (id,x):
+   t=0
+   if id==1:
+     if x>=0 and x<=350000:
+       t +=x*0
+     elif x>=350001 and x<=450000:
+       t +=x*0.05
+     elif(x>=450001 and x<=750000):
+       t +=x*0.10
+     elif(x>=750001 and x<=1150000):
+       t +=x*0.15
+     elif(x>=1150001 and x<=1650000):
+       t +=x*0.20
+     elif(x>1650000):
+       t +=x*0.20
+     else:
+        print ("Sorry not defined! \n")
+
+   elif id==2:
+     if(x>=0 and x<=400000):
+       t +=x*0
+     elif(x>=400001 and x<=450000):
+       t +=x*0.05
+     elif(x>=450001 and x<=750000):
+       t +=x*0.10
+     elif(x>=750001 and x<=1150000):
+       t +=x*0.15
+     elif(x>=1150001 and x<=1650000):
+       t +=x*0.20
+     elif(x>1650000):
+       t +=x*0.25
+     else:
+        print ("Sorry not defined! \n")
+
+   elif id==3:
+     if(x>=0 and x<=475000):
+       t +=x*0
+     elif(x>=475001 and x<=750000):
+       t +=x*0.10
+     elif(x>=750001 and x<=1150000):
+       t +=x*0.15
+     elif(x>=1150001 and x<=1650000):
+       t +=x*0.20
+     elif(x>1650000):
+       t +=x*0.25
+     else:
+        print ("Sorry not defined! \n")
+
+   elif id==4:
+     if(x>=0 and x<=500000):
+       t +=x*0
+     elif(x>=500001 and x<=750000):
+       t +=x*0.10
+     elif(x>=750001 and x<=1150000):
+       t +=x*0.15
+     elif(x>=1150001 and x<=1650000):
+       t +=x*0.20
+     elif(x>1650000):
+       t +=x*0.25
+     else:
+        print ("Sorry not defined! \n")
+   else:
+      print ("Sorry not defined! \n")
+   return t
+
+def wealth( y):
+  w=0;
+  if(y>=0 and y<=40000000):
+     w+=y*0
+  elif(y>=40000001 and y<=100000000):
+     w+=y*0.10
+  elif(y>=100000001 and y<=200000000):
+     w+=y*0.20
+  elif(y>=200000001 and y<=300000000):
+     w+=y*0.30
+  else:
+     w+=y*0.35
+  return w
+
+welcome ()
+id=int(input("Enter id:\n"))
+x=int(input("Enter amount:\n"))
+y=int(input("Enter wealth:\n"))
+print("Income Tax(Tk)",income(id,x))
+print ("Wealth Tax(Tk)",wealth(y))
+print ("Total(Tk):",income (id,x)+wealth(y))
+
+
+
+    
