@@ -1,0 +1,43 @@
+/////////////////////////////////////////////////////////////////////
+//SetBit: count set bit of a given number
+//dectobit () code credit goes to javaTpoint.com;here //is the link:https://www.javatpoint.com/cpp-program-to-convert-decimal-to-binary; 
+//the rest of the code is created by Rezaul Hoque on July 02,2023;
+//contact:rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+///////////////////////////////////////
+#include <iostream>
+int setbit(int * a)
+{
+int count=0;
+for(int k=0;k<10;k++){
+if(a[k]==1){
+count ++;
+}
+}
+return count;
+}
+
+void dectobin(int n){
+int a[10];
+int k;
+for (k=0;n>0;k++)
+{
+a[k]=n%2;
+n=n/2;
+}
+int count=0;
+for(k=k-1;k>=0;k--){
+std::cout<<a[k];
+
+}
+std::cout<<"\n";
+
+std::cout<<setbit(a);
+}
+int main()
+{
+int n,k;
+std::cin>>n;
+dectobin(n);
+return 0;
+}
