@@ -1,0 +1,53 @@
+///////////////////////////////////////////////////////////////
+//BinToDec:converting binary number into decimal number
+//Pseudocode development:
+//first refinement: 
+// -- constitute an array of binary number from user or predefined (here predefined)
+// --then convert them into decimal number using the formula : for each element calculate binary digit* 2^(position of the digit in the array); adding the products will yield the desired number
+//--create a function to do the conversion
+//second refinement:
+// --get an array of binary number
+// -- get the length of the array 
+//-- pass both array and its length to a function
+// --create an int variable to store the result of the product and initialize it to zero
+// -- traverse the array in reverse order and increase the power of base 2 until the power reaches the last index of the array 
+// -- meanwhile, during each iteration add the products to the num variable
+// --finally return the num
+//third refinement:
+// -- int a[]={//elements go here//}
+ //-- int sz=sizeof(a)/sizeof(a[0]);
+// -- pass the array and its length to a function
+// -- for i =0 to sz-1:
+//         print a[i]
+//-- int num=0
+// -- for i=0 to sz-1,j=sz-1 to 0:
+//--     num +=a[j]*pow(2,i)
+//---      return num
+//--  print the result returned by the function
+//this code is created by Rezaul Hoque on July 05,2023;
+//contact:rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+///////////////////////////
+#include <iostream>
+#include <cmath>
+int bintodec(int* a,int sz){
+
+for (int k=0;k<sz;k++)
+std::cout<<a[k];
+int num=0;
+
+for(int i=0,j=sz-1;i<sz ,j>=0;i++,j--){
+num +=a[j]*pow(2,i);
+}
+return num;
+}
+
+int main()
+{
+   int a[]={1,1,0,1,0,1};
+int sz=sizeof(a)/sizeof(a[0]);
+int num;
+num=bintodec(a,sz);
+std::cout<<"\n"<<num<<"\n"<<sz;
+return 0;
+}
