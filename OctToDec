@@ -1,0 +1,33 @@
+  
+/////////////////////////////////////////////////////////////
+//OctToDec:converting octal number into decimal
+//this code is created by Rezaul Hoque on July 06,2023;
+//contact:rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+///////////////////////////
+#include <iostream>
+#include <cmath>
+int octtodec(int* a,int sz){
+
+for (int k=0;k<sz;k++)
+std::cout<<a[k];
+int num=0;
+
+for(int i=0,j=sz-1;i<sz ,j>=0;i++,j--){
+num +=a[j]*pow(8,i);
+}
+return num;
+}
+
+int main()
+{
+   int a[]={7,6,1,4};
+int sz=sizeof(a)/sizeof(a[0]);
+int num;
+num=octtodec(a,sz);
+std::cout<<"\n"<<num<<"\n"<<sz;
+return 0;
+}
+
+
+
