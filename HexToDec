@@ -1,0 +1,52 @@
+
+
+///////////////////////////////////////////////////////////
+//HexToDec:converting hexadecimal number into decimal
+//this code is created by Rezaul Hoque on July 12,2023;
+//contact:rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+///////////////////////////
+#include <iostream>
+#include <cmath>
+#include <string>
+int hextodec(std::string* a,int sz){
+std::string res[sz];
+int c[sz];
+for (int k=0;k<sz;k++)
+if(a[k]=="A")
+  { res[k]="10";}
+else if(a[k]=="B")
+ {res[k]="11";}
+else if(a[k]=="C")
+ { res[k]="12";}
+else if(a[k]=="D")
+ {res[k]="13";}
+else if(a[k]=="E")
+  { res[k]="14";}
+else if(a[k]=="F")
+  {res[k]="15";}
+ else
+   res[k]=a[k];
+
+for (int k=0;k<sz;k++)
+std::cout<<a[k]<<"\n";
+
+for (int k=0;k<sz;k++)
+c[k]=std::stoi(res[k]);
+int num=0;
+
+for(int i=0,j=sz-1;i<sz ,j>=0;i++,j--){
+num +=c[j]*pow(16,i);
+}
+return num;
+}
+
+int main()
+{
+   std::string a[]={"A","2","B"};
+int sz=sizeof(a)/sizeof(a[0]);
+int num;
+num=hextodec(a,sz);
+std::cout<<"\n"<<num<<"\n"<<sz;
+return 0;
+}
