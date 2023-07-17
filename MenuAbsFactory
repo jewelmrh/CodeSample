@@ -1,0 +1,166 @@
+////////////////////////////////////////////////////////////////
+//MenuAbsFactory: example of abstract factory design; 
+//this code is created by Rezaul Hoque on July 18,2023;
+//contact:rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+///////////////////////////
+#include <iostream>
+#include <string>
+class Menu{
+double price=0;
+int qty=0;
+public:
+Menu(){}
+virtual void des()=0;
+};
+class Bread {
+
+double price=0;
+int qty=0;
+public:
+Bread(){}
+virtual void des()=0;
+};
+class Veg {
+
+double price=0;
+int qty=0;
+public:
+Veg(){}
+virtual void des()=0;
+};
+
+class Chicken {
+double price=0;
+int qty=0;
+public:
+Chicken(){}
+virtual void des()=0;
+};
+class BreakfastBread: public Bread{
+
+double price=8.0;
+int qty=1;
+public:
+
+void des(){ std::cout<<qty<<" bread costs Tk "<<price<<" \n";
+}
+};
+
+class LunchBread: public Bread{
+
+double price=10.0;
+int qty=1;
+public:
+
+void des(){ std::cout<<qty<<" bread costs Tk "<<price<<" \n";
+}
+};
+
+class BreakfastVeg: public Veg{
+
+double price=10.0;
+int qty=1;
+public:
+
+void des(){ std::cout<<qty<<" plate of vegetable costs Tk "<<price<<" \n";
+}
+};
+
+class LunchVeg: public Veg{
+
+double price=15.0;
+int qty=1;
+public:
+
+void des(){ std::cout<<qty<<" plate of vegetable costs Tk "<<price<<" \n";
+}
+};
+
+class BreakfastChick: public Chicken{
+double price=60.0;
+int qty=2;
+public:
+void des(){ std::cout<<qty<<" pieces of chicken cost Tk "<<price<<" \n";
+}
+};
+
+class LunchChick: public Chicken{
+double price=65.0;
+int qty=2;
+public:
+void des(){ std::cout<<qty<<" pieces of chicken cost Tk "<<price<<" \n";
+}
+};
+class DayMenu{
+public:
+DayMenu(){}
+virtual void bread()=0;
+virtual void veg()=0;
+virtual void chicken()=0;
+};
+class Breakfast: public DayMenu{
+public:
+Breakfast (){}
+void bread(){
+BreakfastBread b;
+b.des();
+}
+void veg(){
+BreakfastVeg v;
+v.des();
+}
+void chicken(){
+BreakfastChick c;
+c.des();
+}
+};
+
+class Lunch:public DayMenu {
+public:
+Lunch (){}
+void bread(){
+LunchBread b;
+b.des();
+}
+void veg(){
+LunchVeg v;
+v.des();
+}
+void chicken(){
+LunchChick c;
+c.des();
+}
+};
+class MenuMaker{
+public:
+MenuMaker (){}
+static DayMenu* menu(std::string m){
+DayMenu* d;
+if(m=="breakfast")
+ {
+d=new Breakfast();
+return d;
+}
+else if(m=="lunch")
+{
+  d=new Lunch();
+return d;
+}
+else {
+  d=new Breakfast();
+return d;
+}
+}
+};
+
+int main()
+{
+MenuMaker m;
+DayMenu* d=m.menu("lunch");
+d->veg();
+d->chicken();
+delete d;
+
+return 0;
+}
