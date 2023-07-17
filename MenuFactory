@@ -1,0 +1,80 @@
+////////////////////////////////////////////////////////////////////////
+//MenuFactory: example of factory method design; it is also example of inheritance, single responsibility principle and open-close principle
+//this code is created by Rezaul Hoque on July 17,2023;
+//contact:rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+///////////////////////////
+#include <iostream>
+#include <string>
+class Menu{
+double price=0;
+int qty=0;
+public:
+Menu(){}
+virtual void des()=0;
+};
+class Bread :public Menu{
+double price=8.0;
+int qty=1;
+public:
+Bread(){}
+void des(){ std::cout<<qty<<" bread costs Tk "<<price<<" \n";
+}
+};
+class Veg : public Menu {
+double price=10.0;
+int qty=1;
+public:
+Veg(){}
+void des(){ std::cout<<qty<<" plate of vegetable costs Tk "<<price<<" \n";
+}
+};
+
+class Chicken :public Menu{
+double price=60.0;
+int qty=2;
+public:
+Chicken(){}
+void des(){ std::cout<<qty<<" pieces of chicken cost Tk "<<price<<" \n";
+}
+};
+//class Kitchen's  single task is to prepare dish; this class can be extended in future
+class Kitchen {
+public:
+Kitchen(){}
+void prepare(std::string m){
+if(m=="Bread"){
+ Bread b;
+  b.des();
+}
+
+else if(m=="Veg"){
+   Veg v;
+ v.des();
+}
+else if(m=="Chicken"){
+Chicken c;
+c.des();
+}
+else
+  std::cout<<"Not defined! \n";
+}
+~Kitchen(){}
+};
+//class Consumer is closed for any future modification; it can place order and pass it to Kitchen
+class Consumer{
+public:
+Consumer (){}
+void order(std::string s){
+Kitchen k;
+k.prepare(s);
+}
+};
+
+int main()
+{
+    Consumer c;
+c.order("Veg");
+//based on the order type, description of the menu gets printed; given the order type,respective subclass executes the des() method
+return 0;
+}
