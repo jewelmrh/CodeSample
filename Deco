@@ -1,0 +1,59 @@
+
+////////////////////////////////////////////////////////////////////////
+//Deco: example of decorator design pattern,which adds new functionality/feature to an object during runtime unlike subclassing which adds new feature during compiltime;
+//this code is created by Rezaul Hoque on July 19,2023; Wikipedia c++ code example inspired Rezaul to create this program; here is the link https://en.m.wikipedia.org/wiki/Decorator_pattern
+//contact:rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+///////////////////////////
+#include <iostream>
+#include <string>
+class Greet{
+public:
+Greet(){}
+virtual std::string des() const=0;
+};
+class CoGreet: public Greet{
+public:
+std::string s="Decorator example ";
+int d=19,m=07,y=2023;
+CoGreet(){}
+std::string des() const override{ 
+return s+std::to_string(d)+"/"+std::to_string(m)+"/"+std::to_string(y)+" \n";
+}
+};
+
+class Decorator :public Greet{
+protected:
+std::string s;
+
+Greet& g;
+public:
+Decorator(std::string a,Greet& r): s(a),g(r){}
+std::string des() const override {
+return s+g.des();
+}
+};
+class AddDeco:public Greet{
+protected:
+std::string s;
+Greet& g;
+public:
+AddDeco( std::string a,Greet& r): s(a),g(r){}
+std::string des() const override  {
+return g.des()+s;
+}
+};
+int main()
+{
+    CoGreet g;
+Decorator s("\n~~~~~~~~~~~~~~~~~\n",g);
+AddDeco a("\n@@@@@@@@@@@@\n",s);
+
+std::cout<<g.des()<<"\n";
+std::cout<<s.des()<<"\n";
+
+std::cout<<a.des()<<"\n";
+
+return 0;
+
+}
