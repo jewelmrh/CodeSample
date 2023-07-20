@@ -1,0 +1,51 @@
+
+//////////////////////////////////////////////////////////////
+//GymDueStrat: example of strategy design pattern that picks up an algorithm/behavior at runtime; a strategy interface and its concrete classes hold the algorithm; a context class,which has the strategy interface as its member (composition)or function argument, refers to strategy to implement the algorithm;
+//this code is created by Rezaul Hoque on July 20,2023;
+//contact:rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+///////////////////////////
+#include <iostream>
+#include <string>
+class Message{
+public:
+virtual void say()=0;
+};
+class Special:public Message{
+public:
+Special (){}
+void say(){ std::cout<<"Dear Special Member,Greetings from Gym Y. Please clear your dues!";
+}
+};
+class Regular: public Message {
+public:
+Regular(){}
+void say(){ std::cout<<"Dear  Member,Greetings from Gym Y. Please clear your dues!";
+}
+};
+class Ado: public Message{
+public:
+Ado(){}
+void say(){ std::cout<<"Hello there!Greetings from Gym Y. Please clear your dues!";
+}
+};
+class Context{
+private:
+ Message* m;
+public:
+Context (){}
+Context(Message* a){m=a;}
+~Context(){}
+void say(){
+m->say();
+}
+};
+
+int main()
+{
+Message * a= new Regular();
+    Context c(a);
+c.say();
+delete a;
+return 0;
+}
