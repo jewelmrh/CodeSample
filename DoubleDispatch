@@ -1,0 +1,54 @@
+///////////////////////////////////////////////////////////////
+//DoubleDispatch: example of double dispatch
+//this code is created by Rezaul Hoque on August 06,2023;
+//contact:rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+//note: codes shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+////////////////
+#include <iostream>
+class A;
+class B;
+class Ch {
+public:
+virtual void Color(A * a){
+std::cout<<"A is ripe.\n";
+}
+virtual void Color(B* b){
+std::cout<<"B is ripe. \n";
+}
+};
+class ChImp : public Ch{
+public:
+void Color (A* )override{
+std::cout<<"A becomes ripe due to Ch.\n";
+}
+void Color (B*)override {
+std::cout<<"B becomes ripe due to Ch. \n";
+}
+};
+class A{
+public:
+virtual void Color(Ch* c){
+c->Color(this);
+}
+};
+class B:public A{
+public:
+
+virtual void Color(Ch * c){
+c->Color(this);
+}
+};
+
+
+int main()
+{
+B b;
+
+    A * a=&b;
+Ch s;
+ChImp ch;
+Ch* c=&ch;
+a->Color(&s);
+a->Color(c);
+return 0;
+}
