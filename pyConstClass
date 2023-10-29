@@ -1,0 +1,35 @@
+
+#######
+#pyConstClass: example of classmethod as a mean  to constructor overloading in Python,which does not support overloading
+#this program is  created by Rezaul Hoque on October 29,2023
+#contact:jewelmrh@yahoo.com;rhoque4478@gmail.com;Dhaka,Bangladesh;https://rezaulhoque.wordpress.com,https://hoquestake.blogspot.com
+#note: programs shared by Rezaul Hoque on github are not for sale; they are created and shared to facilitate the algorithm learning process; many like Hoque use this platform to practice programming ;Rezaul hopes his contribution helps others to fine tune their learning;
+###################
+class Demo:
+ x=0
+ y=0
+ res=" "
+##
+ #def __init__(self,p,q):
+ # self.x=p
+ # self.y=q
+##
+ @classmethod
+ def show1(cls,p):
+   cls.x=p
+   cls.res=str(cls.x)
+   print(cls.res)
+ @classmethod
+ def show2(cls,p,q):
+   cls.x=p
+   cls.y=q
+   cls.res=str(cls.x)+" "+str (cls.y)
+   print (cls.res)
+
+Demo.show2(1,2)
+Demo().show1(1)
+a=Demo()
+a.show1(3)
+
+
+
