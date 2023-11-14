@@ -1,0 +1,40 @@
+
+///////////////////////////////////////////////////////////
+//HashMap: constructors and different operations
+//code credit goes to www.geeksforgeeks.com
+//here is the link https://www.geeksforgeeks.org/java-util-hashmap-in-java-with-examples/
+//////////////////////////////////////////////////////////////
+import java.util.*;
+import java.lang.*;
+
+
+class Rextester
+{  
+    public static void main(String args[])
+    {
+//HashMap() constructor
+        HashMap<Integer,String> h=new HashMap<Integer,String>();
+//adding/changing HashMap
+h.put(1,"Abra");
+h.put(2,"Ka");
+h.put(3,"Debra");
+h.put(3,"Gili");
+//removing item from HashMap
+h.remove(2);
+for(Map.Entry<Integer,String> s: h.entrySet())
+//traversing HashMap
+System.out.println("Key: "+ s.getKey()+" Value: "+ s.getValue());
+//HashMap(Map m) constructor
+HashMap<Integer,String> a=new HashMap<Integer,String>(h);
+System.out.println(a);
+//HashMap(int initCap,float loadFact) constructor
+HashMap<Integer, String> lf=new HashMap<>(3,0.5f);
+lf.put(1,"Quart");
+lf.put(2,"Full");
+lf.put(3,"Half");
+System.out.println(lf);
+
+    }
+}
+
+
