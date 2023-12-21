@@ -1,0 +1,50 @@
+
+################
+#Red And Black Tree Search Operation
+##Definition credit: www.geeksforgeeks.com
+#The Red-Black tree satisfies all the properties of binary search tree in addition to that it satisfies following additional properties –
+#1. Root property: The root is black.
+#2. External property: Every leaf (Leaf is a NULL child of a node) is black in Red-Black tree.
+#3. Internal property: The children of a red node are black. Hence possible parent of red node is a black node.
+#4. Depth property: All the leaves have the same black depth.
+#5. Path property: Every simple path from root to descendant leaf node contains same number of black nodes. 
+#The result of all these above-mentioned properties is that the Red-Black tree is roughly balanced.
+#Rules that every red-black tree follows: 
+#1.Every node has a color either red or black.
+#2.The root of the tree is always black.
+#3.There are no two adjacent red nodes (A red node cannot have a red parent or red child).
+#4.Every path from a node (including root) to any of its descendants NULL nodes has the same number of black nodes.
+#5.Every leaf (e.i. NULL node) must be colored BLACK.
+#code credit: www.educative.io
+#
+#reference: https://www.educative.io/answers/how-to-search-a-node-in-red-black-tree
+##################
+RED='red'
+BLACK='black'
+class Node:
+ def __init__(self,val,col):
+   self.val=val
+   self.col=col
+   self.left=None
+   self.right=None
+class RBTree:
+ def __init__(self):
+   self.root=None
+ def _search(self,node,n):
+   if not node:
+      return False
+   if node.val == n:
+      return True
+   return self._search(node.left,n) if node.val<n else self._search(node.right,n)
+   
+ def search(self,n):
+   return self._search(self.root,n)
+ 
+t=RBTree()
+t.root=Node(15,BLACK)
+t.root.left=Node(10,BLACK)
+t.root.right=Node(11,RED)
+t.root.right.left=Node(9,BLACK)
+t.root.right.right=Node(20,BLACK)
+print (t.search (0))
+
